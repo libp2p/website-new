@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- include "head.html" -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<!-- include "google_analytics.html"-->
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-96910779-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async="" src="//www.google-analytics.com/analytics.js"></script>
+<!-- include "google_analytics.html"-->
+<link rel="shortcut icon" href="/img/favicon.png" type="image/png">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+<meta name="description" content="Run your network applications free from runtime and address services, independently of their location." />
+<meta name="author" content="The libp2p Foundation" />
+ <!-- open graph -->
+<meta property="og:type" content="website" />
+<meta property="og:description" content="Run your network applications free from runtime and address services, independently of their location." />
+<meta property="og:title" content="libp2p - A modular network stack" />
+<meta property="og:site_name" content="libp2p" />
+<meta property="og:url" content="/ethdenver-2024/" />
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="img/logo_small.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="146" />
+<meta property="og:image:height" content="166" />
+<!--Twitter Cards-->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="libp2p" />
+<meta name="twitter:title" content="libp2p - A modular network stack" />
+<meta name="twitter:creator" content="The libp2p Foundation" />
+<meta name="twitter:description" content="Run your network applications free from runtime and address services, independently of their location." />
+<meta name="twitter:domain" content="libp2p.io" />
+<meta name="twitter:image:src" content="img/logo_small.png" />
+<!-- Plausible Analytics -->
+<script defer data-domain="libp2p.io" src="https://plausible.io/js/script.js"></script>
+<!-- include "head.html" -->
+<link rel="stylesheet" type="text/css" href="/css/fontawesome.css">
+<link rel="stylesheet" type="text/css" href="/css/index.css">
+<link rel="stylesheet" type="text/css" href="/css/ethdenver.css">
+<title>libp2p Day - ETHDenver 2024</title>
+<meta name="google-site-verification" content="NOJDGy-FaS-jVnj08WfJcjpm3r8uDmoacV_D1C9oddc" />
+</head>
+<body>
+<!-- include "topbar.html" -->
+<header>
+  <div class="wrap">
+    <a class="logo" href="/ethdenver-2024/">
+      <img width="60" height="72" src="/img/logo_small.png" alt="">
+      <b>lib</b>p2p Day
+    </a>
+    <a href='#' class='bars'><i class="fa fa-bars" aria-hidden="true"></i></a>
+    <a href='#' class="close"><i class="fa fa-times" aria-hidden="true"></i></a>
+    <nav>
+      <ul>
+        <li><a href="/ethdenver-2024/#schedule"><i class="fa fa-calendar-days"></i>Schedule</a></li>
+        <li><a href="/ethdenver-2024/#faq"><i class="fa fa-circle-question"></i>FAQ</a></li>
+        <li><a href="https://lu.ma/libp2pday-denver" target="_blank"><i class="fa fa-id-card"></i>Register to Attend</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<!-- include "topbar.html" -->
+<main>
+<!-- include "ethdenver-description.html" -->
+<style>
+  .ethdenver {
+    display: block;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0);
+    overflow-y: visible;
+    transform: translate3d(0,0,0); /* hint to prefer gpu rending. */
+  }
+
+  .layer {
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: 0;
+    background-color: rgba(0, 0, 0, 0);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: 0px 0px;
+    transform-style: preserve-3d;
+  }
+
+  .module-transports {
+    top: 100px;
+  }
+
+  @keyframes fade {
+      0% { opacity: 0 }
+    100% { opacity: 1 }
+  }
+  .anim-fade {
+    animation: fade 1000ms ease-in both;
+  }
+
+  @keyframes throb {
+      0% { transform: scale(1)}
+     50% { transform: scale(1.02)}
+    100% { transform: scale(1)}
+  }
+
+  #ethdenver-stage {
+    animation: throb 200ms ease-in-out 2200ms both;
+  }
+
+  #ethdenver-headline {
+    animation: fade 1000ms ease-in 800ms both;
+  }
+
+  @keyframes rise {
+      0% { transform: translate(0, 50px)}
+    100% { transform: translate(0, 0px)}
+  }
+
+  #ethdenver-subhead {
+    animation:
+      fade 500ms ease-in 2400ms both,
+      rise 500ms ease-in 2200ms both;
+  }
+  #ethdenver-subhead * {
+    opacity: 1;
+  }
+</style>
+<article class="ethdenver" style="overflow:hidden;">
+  <div id="ethdenver-stage">
+  <div class="wrap">
+    <h2 id="ethdenver-headline"><span>libp2p</span> <span>Day</span> <span>ETHDenver</span> <span>2024</span></h2>
+    <div id="ethdenver-subhead">
+      <p style="margin-top:0;">🚀 <b>lib</b>p2p Day is a gathering of
+          developers, researchers, and engaged community members focused on
+          pushing the boundaries of decentralized peer-to-peer networks. This
+          event is more than just another meetup at ETHDenver. This is where we
+          will dig into turning nuts and bolts solutions and cutting edge
+          research into a usable and robust peer-to-peer networking library for
+          our mobile and ad hoc internet of today.</p>
+    </div>
+  </div>
+  <div class="triangle white"></div>
+</article>
+<!-- include "ethdenver-description.html" -->
+<!-- include "ethdenver-schedule.html" -->
+<article class="center schedule">
+  <h2 id="schedule">Schedule</h2>
+  <div class="wrap">
+    
+    
+    <div class="row">
+      <div class="column left">
+        <div class="rectangle-left">
+          <h2>13:30 - 13:45</h2>
+          <p><b>Where:</b> Assembly B</p>
+          <p><b>Who:</b> All Are Welcome</p>
+          <p><b>What:</b> The <b>lib</b>p2p Community</p>
+        </div>
+      </div>
+      <div class="column right">
+        <div class="rectangle-right">
+          <ul>
+            <li>
+              
+              <img src="/img/headshot.png"></img>
+              
+              
+              <img src="/img/headshot.png"></img>
+              
+              <h2 style="width:100%;">The Talk Title</h2>
+              <p style="width:100%">The description of the talk that will be given.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="column left">
+        <div class="rectangle-left">
+          <h2>13:30 - 13:45</h2>
+          <p><b>Where:</b> Assembly B</p>
+          <p><b>Who:</b> All Are Welcome</p>
+          <p><b>What:</b> The <b>lib</b>p2p Community</p>
+        </div>
+      </div>
+      <div class="column right">
+        <div class="rectangle-right">
+          <ul>
+            <li>
+              
+              <img src="/img/headshot.png"></img>
+              
+              
+              <h2 style="width:100%;">The Talk Title</h2>
+              <p style="width:100%">The description of the talk that will be given.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="column left">
+        <div class="rectangle-left">
+          <h2>13:30 - 13:45</h2>
+          <p><b>Where:</b> Assembly B</p>
+          <p><b>Who:</b> All Are Welcome</p>
+          <p><b>What:</b> The <b>lib</b>p2p Community</p>
+        </div>
+      </div>
+      <div class="column right">
+        <div class="rectangle-right">
+          <ul>
+            <li>
+              
+              <img src="/img/headshot.png"></img>
+              
+              
+              <h2 style="width:100%;">The Talk Title</h2>
+              <p style="width:100%">The description of the talk that will be given.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+
+  </div>
+  <div class="triangle grey"></div>
+</article>
+<!-- include "ethdenver-schedule.html" -->
+</main>
+<!-- include "footer.html" -->
+<footer>
+  <div class="wrap">
+    <div class="footer-links">
+      <nav>
+        <a href="https://github.com/libp2p/website">Website source</a>
+        <a href="https://creativecommons.org/licenses/by/3.0/">©2024 The libp2p Foundation CC-BY 3.0</a>
+      </nav>
+    </div>
+    <div class="footer-title">
+      <p class="libp2p-day"><b>lib</b>p2p Day</p>
+      <p class="ethdenver">ETHDenver</p>
+      <p class="year">2024</p>
+    </div>
+  </div>
+</footer>
+<!-- include "footer.html" -->
+<script type="text/javascript" src="/js/common.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+</body>
+</html>

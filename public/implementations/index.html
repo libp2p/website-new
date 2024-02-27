@@ -1,0 +1,6292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<!-- include "head.html" -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<!-- include "google_analytics.html"-->
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-96910779-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async="" src="//www.google-analytics.com/analytics.js"></script>
+<!-- include "google_analytics.html"-->
+<link rel="shortcut icon" href="/img/favicon.png" type="image/png">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+<meta name="description" content="Run your network applications free from runtime and address services, independently of their location." />
+<meta name="author" content="The libp2p Foundation" />
+ <!-- open graph -->
+<meta property="og:type" content="website" />
+<meta property="og:description" content="Run your network applications free from runtime and address services, independently of their location." />
+<meta property="og:title" content="libp2p - A modular network stack" />
+<meta property="og:site_name" content="libp2p" />
+<meta property="og:url" content="/implementations/" />
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="img/logo_small.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="146" />
+<meta property="og:image:height" content="166" />
+<!--Twitter Cards-->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="libp2p" />
+<meta name="twitter:title" content="libp2p - A modular network stack" />
+<meta name="twitter:creator" content="The libp2p Foundation" />
+<meta name="twitter:description" content="Run your network applications free from runtime and address services, independently of their location." />
+<meta name="twitter:domain" content="libp2p.io" />
+<meta name="twitter:image:src" content="img/logo_small.png" />
+<!-- Plausible Analytics -->
+<script defer data-domain="libp2p.io" src="https://plausible.io/js/script.js"></script>
+<!-- include "head.html" -->
+<link rel="stylesheet" type="text/css" href="/css/fontawesome.css">
+<link rel="stylesheet" type="text/css" href="/css/implementations.css">
+<title>Implementations - libp2p</title>
+</head>
+
+<body>
+<!-- include "topbar.html" -->
+<header>
+  <div class="wrap">
+    <a class="logo  static " href="/">
+      <img width="60" height="72" src="/img/logo_small.png" alt="">
+      <b>lib</b>p2p
+    </a>
+    <a href='#' class='bars'><i class="fa fa-bars" aria-hidden="true"></i></a>
+    <a href='#' class="close"><i class="fa fa-times" aria-hidden="true"></i></a>
+    <nav>
+      <ul>
+        <li><a href="/implementations"  class="active" ><i class="fa fa-gear"></i>Implementations</a></li>
+        <li><a href="/media" ><i class="fa fa-film"></i>Media</a></li>
+        <li><a href="https://github.com/libp2p/specs" target="_blank"><i class="fa fa-pen-ruler"></i>Specs</a></li>
+        <li><a href="https://docs.libp2p.io" target="_blank"><i class="fa fa-book"></i>Docs</a></li>
+        <li><a href="https://connectivity.libp2p.io" target="_blank"><i class="fa fa-network-wired"></i>Connectivity</a></li>
+        <li><a href="https://blog.libp2p.io" target="_blank"><i class="fa fa-rss"></i>Blog</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<!-- include "topbar.html" -->
+<main>
+  <article class="center implementations">
+    <h1>Implementations</h1>
+    <div class="wrap">
+      <p>libp2p is composed of many modules and different parts. Here, overviews are available for all the different libraries, along with the 
+        status of each implementation. All sections use the same status legend and link to the implementation's source code.</p>
+      <div class="links">
+        <div class="active-link">
+          <div class="copy-block">
+            <div class="img">
+              <img width="10" src="../img/svg/transports.svg" alt="Transports">
+            </div>
+            <span>Transports</span>
+          </div>
+          <i class="fa fa-angle-down" aria-hidden="true"></i>
+        </div>
+
+        <div class="columns">
+          <div class="column col1">
+            <a href="#connection-upgrades" class="link scroll">
+              <div class="img">
+                <img width="10" src="../img/svg/connection-upgrades.svg" alt="Supported Implementations">
+              </div>
+              <span>Supported Implementations</span>
+            </a>
+            <a href="#transports" class="link scroll">
+              <div class="img">
+                <img width="10" src="../img/svg/transports.svg" alt="Transports">
+              </div>
+              <span>Transports</span>
+            </a>
+            <a href="#nat-traversal" class="link scroll">
+              <div class="img">
+                <img width="14" src="../img/svg/nat-traversal.svg" alt="NAT traversal">
+              </div>
+              <span>NAT Traversal</span>
+            </a>
+            <a href="#crypto-channels" class="link scroll">
+              <div class="img">
+                <img width="14" src="../img/svg/crypto-channels.svg" alt="Secure Communication">
+              </div>
+              <span>Secure Communication</span>
+            </a>
+          </div>
+          <div class="column col2">
+            <a href="#discovery" class="link scroll">
+              <div class="img">
+                <img width="18" src="../img/svg/discovery.svg" alt="Discovery">
+              </div>
+              <span>Discovery</span>
+            </a>
+            <a href="#peer-routing" class="link scroll">
+              <div class="img">
+                <img width="13" src="../img/svg/peer-routing.svg" alt="Peer routing">
+              </div>
+              <span>Peer Routing</span>
+            </a>
+            <a href="#others" class="link scroll">
+              <div class="img">
+                <img width="13" src="../img/svg/others.svg" alt="Publish/subscribe">
+              </div>
+              <span>Publish/Subscribe</span>
+            </a>
+          </div>
+          <div class="column col3">
+            <a href="#stream-muxers" class="link scroll">
+              <div class="img">
+                <img width="10" src="../img/svg/stream-muxers.svg" alt="Stream Multiplexing">
+              </div>
+              <span>Stream Multiplexing</span>
+            </a>
+            <a href="#record-stores" class="link scroll">
+              <div class="img">
+                <img width="10" src="../img/svg/record-stores.svg" alt="Storage">
+              </div>
+              <span>Storage</span>
+            </a>
+            <a href="#utils" class="link scroll">
+              <div class="img">
+                <img width="10" src="../img/svg/utils.svg" alt="General purpose utils & datatypes">
+              </div>
+              <span>General Purpose Utilities & Datatypes</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="triangle white"></div>
+  </article>
+
+  <div class="cube img">
+    <div class="cubes-wrapper">
+      <img class="cube-shape" width="125" src="../img/svg/cube_shape.svg" alt="cube_shape">
+      <img class="cubes transports" width="46" src="../img/svg/transports.svg" alt="">
+      <img class="cubes stream-muxers" width="46" src="../img/svg/stream-muxers.svg" alt="">
+      <img class="cubes crypto-channels" width="46" src="../img/svg/crypto-channels.svg" alt="">
+      <img class="cubes connection-upgrades" width="46" src="../img/svg/connection-upgrades.svg" alt="">
+      <img class="cubes peer-routing" width="46" src="../img/svg/peer-routing.svg" alt="">
+      <img class="cubes record-stores" width="46" src="../img/svg/record-stores.svg" alt="">
+      <img class="cubes nat-traversal" width="46" src="../img/svg/nat-traversal.svg" alt="">
+      <img class="cubes discovery" width="46" src="../img/svg/discovery.svg" alt="">
+      <img class="cubes utils" width="46" src="../img/svg/utils.svg" alt="">
+      <img class="cubes others" width="46" src="../img/svg/others.svg" alt="">
+    </div>
+  </div>
+
+  <article class="center implementations-info">
+    <div class="wrap">
+
+    
+
+    
+      
+
+<section id="connection-upgrades">
+<div class="table">
+  <div class="title">
+    <div class="wrapper">
+      <div class="header">
+        
+          Supported Implementations
+        
+      </div>
+    </div>
+  </div>
+  <div class="info">
+    <div class="table-wrapper">
+      <table>
+        <tbody>
+          <tr class="head-row">
+            <th class="head-col"></th>
+              
+                <th>Go</th>
+              
+                <th>Rust</th>
+              
+                <th>JavaScript (Node)</th>
+              
+                <th>JavaScript (Browser)</th>
+              
+                <th>Nim</th>
+              
+                <th>C&#43;&#43;</th>
+              
+                <th>Swift</th>
+              
+                <th>JVM</th>
+              
+                <th>Python</th>
+              
+                <th>Erlang</th>
+              
+                <th>Zig</th>
+              
+          </tr>
+          
+          <tr>
+            <th class="head-col">
+              
+                libp2p-implementations
+              
+            </th>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/go-libp2p" target="_blank">
+                    
+
+
+<i class="yellow icon-hexagon"></i>
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/rust-libp2p/" target="_blank">
+                    
+
+
+<i class="yellow icon-hexagon"></i>
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/js-libp2p" target="_blank">
+                    
+
+
+<i class="yellow icon-hexagon"></i>
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/js-libp2p" target="_blank">
+                    
+
+
+<i class="yellow icon-hexagon"></i>
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/status-im/nim-libp2p" target="_blank">
+                    
+
+
+<i class="yellow icon-hexagon"></i>
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/cpp-libp2p" target="_blank">
+                    
+
+
+<i class="yellow icon-hexagon"></i>
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/swift-libp2p/swift-libp2p" target="_blank">
+                    
+
+
+<i class="yellow icon-hexagon"></i>
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/jvm-libp2p" target="_blank">
+                    
+
+
+<i class="yellow icon-hexagon"></i>
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/py-libp2p" target="_blank">
+                    
+
+
+<i class="yellow icon-hexagon"></i>
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/helium/erlang-libp2p" target="_blank">
+                    
+
+
+<i class="yellow icon-hexagon"></i>
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/marcopolo/zig-libp2p" target="_blank">
+                    
+
+
+<i class="yellow icon-hexagon"></i>
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+          </tr>
+          
+          <tr class="empty">
+            <th class="head-col"></th>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+          </tr>
+        </thead>
+      </table>
+    </div>
+  </div>
+  <div class="description">
+    <div><i class="icon-hexagon green"></i><span>Done</span></div>
+    <div><i class="icon-hexagon yellow"></i><span>In Progress / Usable</span></div>
+    <div><i class="icon-hexagon red"></i><span>Prototype / Unstable</span></div>
+    <div><i class="icon-hexagon blue"></i><span>Unimplementable / Unsupported</span></div>
+    <div><i class="icon-hexagon grey"></i><span>Missing</span></div>
+  </div>
+</div>
+</section>
+
+    
+      
+
+<section id="transports">
+<div class="table">
+  <div class="title">
+    <div class="wrapper">
+      <div class="header">
+        
+          Transports
+        
+      </div>
+    </div>
+  </div>
+  <div class="info">
+    <div class="table-wrapper">
+      <table>
+        <tbody>
+          <tr class="head-row">
+            <th class="head-col"></th>
+              
+                <th>Go</th>
+              
+                <th>Rust</th>
+              
+                <th>JavaScript (Node)</th>
+              
+                <th>JavaScript (Browser)</th>
+              
+                <th>Nim</th>
+              
+                <th>C&#43;&#43;</th>
+              
+                <th>Swift</th>
+              
+                <th>JVM</th>
+              
+                <th>Python</th>
+              
+                <th>Erlang</th>
+              
+                <th>Zig</th>
+              
+          </tr>
+          
+          <tr>
+            <th class="head-col">
+              
+                libp2p-tcp
+              
+            </th>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/go-libp2p/tree/master/p2p/transport/tcp" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/rust-libp2p/tree/master/transports/tcp" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/js-libp2p/tree/master/packages/transport-tcp" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+<i class="blue icon-hexagon"></i>
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/status-im/nim-libp2p/blob/master/libp2p/transports/tcptransport.nim" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/cpp-libp2p/tree/master/src/transport/tcp" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/swift-libp2p/swift-libp2p-tcp" target="_blank">
+                    
+
+
+<i class="yellow icon-hexagon"></i>
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/jvm-libp2p/tree/develop/libp2p/src/main/kotlin/io/libp2p/transport/tcp" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/py-libp2p/tree/master/libp2p/transport/tcp" target="_blank">
+                    
+
+
+
+
+<i class="red icon-hexagon"></i>
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/helium/erlang-libp2p/tree/master/src" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+          </tr>
+          
+          <tr>
+            <th class="head-col">
+              
+                <a href = "https://github.com/libp2p/specs/tree/master/quic" target="_blank">libp2p-quic 🔗</a>
+              
+            </th>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/go-libp2p/tree/master/p2p/transport/quic" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/rust-libp2p/tree/master/transports/quic" target="_blank">
+                    
+
+
+<i class="yellow icon-hexagon"></i>
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/js-libp2p/issues/1459" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+<i class="blue icon-hexagon"></i>
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+          </tr>
+          
+          <tr>
+            <th class="head-col">
+              
+                libp2p-websocket
+              
+            </th>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/go-libp2p/tree/master/p2p/transport/websocket" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/rust-libp2p/tree/master/transports/websocket" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/js-libp2p/tree/master/packages/transport-websockets" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/js-libp2p/tree/master/packages/transport-websockets" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/status-im/nim-libp2p/blob/master/libp2p/transports/wstransport.nim" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/swift-libp2p/swift-libp2p-websocket" target="_blank">
+                    
+
+
+<i class="yellow icon-hexagon"></i>
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/jvm-libp2p/tree/develop/libp2p/src/main/kotlin/io/libp2p/transport/ws" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+          </tr>
+          
+          <tr>
+            <th class="head-col">
+              
+                <a href = "https://github.com/libp2p/specs/tree/master/webtransport" target="_blank">libp2p-webtransport 🔗</a>
+              
+            </th>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/go-libp2p/tree/master/p2p/transport/webtransport" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+<i class="blue icon-hexagon"></i>
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/js-libp2p/tree/master/packages/transport-websockets" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+          </tr>
+          
+          <tr>
+            <th class="head-col">
+              
+                <a href = "https://github.com/libp2p/specs/blob/master/webrtc/webrtc-direct.md" target="_blank">libp2p-webrtc-browser-to-server 🔗</a>
+              
+            </th>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/go-libp2p/issues/2030" target="_blank">
+                    
+
+
+
+
+<i class="red icon-hexagon"></i>
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/rust-libp2p/tree/master/transports/webrtc" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/js-libp2p/tree/master/packages/transport-webrtc" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/js-libp2p/tree/master/packages/transport-webrtc" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+          </tr>
+          
+          <tr>
+            <th class="head-col">
+              
+                <a href = "https://github.com/libp2p/specs/blob/master/webrtc/webrtc.md" target="_blank">libp2p-webrtc-private-to-private 🔗</a>
+              
+            </th>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/go-libp2p/pull/2177" target="_blank">
+                    
+
+
+
+
+<i class="red icon-hexagon"></i>
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/js-libp2p/tree/master/packages/transport-webrtc" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/js-libp2p/tree/master/packages/transport-webrtc" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+          </tr>
+          
+          <tr class="empty">
+            <th class="head-col"></th>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+          </tr>
+        </thead>
+      </table>
+    </div>
+  </div>
+  <div class="description">
+    <div><i class="icon-hexagon green"></i><span>Done</span></div>
+    <div><i class="icon-hexagon yellow"></i><span>In Progress / Usable</span></div>
+    <div><i class="icon-hexagon red"></i><span>Prototype / Unstable</span></div>
+    <div><i class="icon-hexagon blue"></i><span>Unimplementable / Unsupported</span></div>
+    <div><i class="icon-hexagon grey"></i><span>Missing</span></div>
+  </div>
+</div>
+</section>
+
+    
+      
+
+<section id="nat-traversal">
+<div class="table">
+  <div class="title">
+    <div class="wrapper">
+      <div class="header">
+        
+          NAT Traversal
+        
+      </div>
+    </div>
+  </div>
+  <div class="info">
+    <div class="table-wrapper">
+      <table>
+        <tbody>
+          <tr class="head-row">
+            <th class="head-col"></th>
+              
+                <th>Go</th>
+              
+                <th>Rust</th>
+              
+                <th>JavaScript (Node)</th>
+              
+                <th>JavaScript (Browser)</th>
+              
+                <th>Nim</th>
+              
+                <th>C&#43;&#43;</th>
+              
+                <th>Swift</th>
+              
+                <th>JVM</th>
+              
+                <th>Python</th>
+              
+                <th>Erlang</th>
+              
+                <th>Zig</th>
+              
+          </tr>
+          
+          <tr>
+            <th class="head-col">
+              
+                <a href = "https://github.com/libp2p/specs/blob/master/relay/circuit-v2.md" target="_blank">libp2p-circuit-relay-v2 🔗</a>
+              
+            </th>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/go-libp2p/tree/master/p2p/protocol/circuitv2" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/rust-libp2p/tree/master/protocols/relay/src/v2" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/js-libp2p/tree/master/packages/libp2p/src/circuit-relay" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/js-libp2p/tree/master/packages/libp2p/src/circuit-relay" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/status-im/nim-libp2p/blob/unstable/libp2p/protocols/connectivity/relay/relay.nim" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+          </tr>
+          
+          <tr>
+            <th class="head-col">
+              
+                <a href = "https://github.com/libp2p/specs/tree/master/autonat" target="_blank">libp2p-autonat 🔗</a>
+              
+            </th>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/go-libp2p/tree/master/p2p/host/autonat" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/rust-libp2p/blob/master/protocols/autonat/" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/js-libp2p/tree/master/packages/libp2p/src/autonat" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/js-libp2p/tree/master/packages/libp2p/src/autonat" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/status-im/nim-libp2p/blob/unstable/libp2p/protocols/connectivity/autonat.nim" target="_blank">
+                    
+
+
+
+
+<i class="red icon-hexagon"></i>
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/cpp-libp2p/tree/master/src/security/tls" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/Peergos/nabu/blob/master/src/main/java/org/peergos/protocol/autonat/AutonatProtocol.java" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/helium/erlang-libp2p/tree/master/src/nat" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+          </tr>
+          
+          <tr>
+            <th class="head-col">
+              
+                <a href = "https://github.com/libp2p/specs/blob/master/connections/hole-punching.md" target="_blank">libp2p-hole-punching 🔗</a>
+              
+            </th>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/go-libp2p/tree/master/p2p/protocol/holepunch" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/rust-libp2p/tree/master/protocols/dcutr" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/js-libp2p/issues/1461" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/js-libp2p/tree/master/packages/transport-webrtc" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+          </tr>
+          
+          <tr class="empty">
+            <th class="head-col"></th>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+          </tr>
+        </thead>
+      </table>
+    </div>
+  </div>
+  <div class="description">
+    <div><i class="icon-hexagon green"></i><span>Done</span></div>
+    <div><i class="icon-hexagon yellow"></i><span>In Progress / Usable</span></div>
+    <div><i class="icon-hexagon red"></i><span>Prototype / Unstable</span></div>
+    <div><i class="icon-hexagon blue"></i><span>Unimplementable / Unsupported</span></div>
+    <div><i class="icon-hexagon grey"></i><span>Missing</span></div>
+  </div>
+</div>
+</section>
+
+    
+      
+
+<section id="crypto-channels">
+<div class="table">
+  <div class="title">
+    <div class="wrapper">
+      <div class="header">
+        
+          Secure Communication
+        
+      </div>
+    </div>
+  </div>
+  <div class="info">
+    <div class="table-wrapper">
+      <table>
+        <tbody>
+          <tr class="head-row">
+            <th class="head-col"></th>
+              
+                <th>Go</th>
+              
+                <th>Rust</th>
+              
+                <th>JavaScript (Node)</th>
+              
+                <th>JavaScript (Browser)</th>
+              
+                <th>Nim</th>
+              
+                <th>C&#43;&#43;</th>
+              
+                <th>Swift</th>
+              
+                <th>JVM</th>
+              
+                <th>Python</th>
+              
+                <th>Erlang</th>
+              
+                <th>Zig</th>
+              
+          </tr>
+          
+          <tr>
+            <th class="head-col">
+              
+                <a href = "https://github.com/libp2p/specs/blob/master/noise/" target="_blank">libp2p-noise 🔗</a>
+              
+            </th>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/go-libp2p/tree/master/p2p/security/noise" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/rust-libp2p/tree/master/transports/noise" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/ChainSafe/js-libp2p-noise" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/ChainSafe/js-libp2p-noise" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/status-im/nim-libp2p/blob/unstable/libp2p/protocols/secure/noise.nim" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/cpp-libp2p/tree/master/src/security/noise" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/swift-libp2p/swift-libp2p-noise" target="_blank">
+                    
+
+
+
+
+<i class="red icon-hexagon"></i>
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/jvm-libp2p/tree/develop/libp2p/src/main/kotlin/io/libp2p/security/noise" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/py-libp2p/tree/master/libp2p/security/noise" target="_blank">
+                    
+
+
+
+
+<i class="red icon-hexagon"></i>
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+          </tr>
+          
+          <tr>
+            <th class="head-col">
+              
+                <a href = "https://github.com/libp2p/specs/blob/master/tls/tls.md" target="_blank">libp2p-tls 🔗</a>
+              
+            </th>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/go-libp2p/tree/master/p2p/security/tls" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/rust-libp2p/tree/master/transports/tls" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/cpp-libp2p/tree/master/src/security/tls" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/jvm-libp2p/blob/v1.0.0/libp2p/src/main/kotlin/io/libp2p/security/tls/TLSSecureChannel.kt" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+          </tr>
+          
+          <tr class="empty">
+            <th class="head-col"></th>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+          </tr>
+        </thead>
+      </table>
+    </div>
+  </div>
+  <div class="description">
+    <div><i class="icon-hexagon green"></i><span>Done</span></div>
+    <div><i class="icon-hexagon yellow"></i><span>In Progress / Usable</span></div>
+    <div><i class="icon-hexagon red"></i><span>Prototype / Unstable</span></div>
+    <div><i class="icon-hexagon blue"></i><span>Unimplementable / Unsupported</span></div>
+    <div><i class="icon-hexagon grey"></i><span>Missing</span></div>
+  </div>
+</div>
+</section>
+
+    
+      
+
+<section id="discovery">
+<div class="table">
+  <div class="title">
+    <div class="wrapper">
+      <div class="header">
+        
+          Discovery
+        
+      </div>
+    </div>
+  </div>
+  <div class="info">
+    <div class="table-wrapper">
+      <table>
+        <tbody>
+          <tr class="head-row">
+            <th class="head-col"></th>
+              
+                <th>Go</th>
+              
+                <th>Rust</th>
+              
+                <th>JavaScript (Node)</th>
+              
+                <th>JavaScript (Browser)</th>
+              
+                <th>Nim</th>
+              
+                <th>C&#43;&#43;</th>
+              
+                <th>Swift</th>
+              
+                <th>JVM</th>
+              
+                <th>Python</th>
+              
+                <th>Erlang</th>
+              
+                <th>Zig</th>
+              
+          </tr>
+          
+          <tr>
+            <th class="head-col">
+              
+                <a href = "https://github.com/libp2p/specs/blob/master/kad-dht/README.md#bootstrap-process" target="_blank">bootstrap 🔗</a>
+              
+            </th>
+            
+              <td>
+                
+                  <a href="https://github.com/ipfs/go-ipfs/blob/master/core/bootstrap/bootstrap.go" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/js-libp2p/tree/master/packages/peer-discovery-bootstrap" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/js-libp2p/tree/master/packages/peer-discovery-bootstrap" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/cpp-libp2p/tree/master/src/security/tls" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/swift-libp2p/swift-libp2p/tree/main/Sources/LibP2P/Discovery/Bootstrap" target="_blank">
+                    
+
+
+<i class="yellow icon-hexagon"></i>
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/Peergos/nabu/blob/master/src/main/java/org/peergos/protocol/dht/Kademlia.java" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+          </tr>
+          
+          <tr>
+            <th class="head-col">
+              
+                random-walk
+              
+            </th>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/go-libp2p-kad-dht" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/rust-libp2p/tree/master/protocols/kad" target="_blank">
+                    
+
+
+<i class="yellow icon-hexagon"></i>
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/cpp-libp2p/tree/master/src/security/tls" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+          </tr>
+          
+          <tr>
+            <th class="head-col">
+              
+                <a href = "https://github.com/libp2p/specs/blob/master/discovery/mdns.md" target="_blank">mdns-discovery 🔗</a>
+              
+            </th>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/go-libp2p/blob/master/p2p/discovery/mdns/mdns.go" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/rust-libp2p/tree/master/protocols/mdns" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/js-libp2p/tree/master/packages/peer-discovery-mdns" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+<i class="blue icon-hexagon"></i>
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/swift-libp2p/swift-libp2p-mdns" target="_blank">
+                    
+
+
+
+
+<i class="red icon-hexagon"></i>
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+          </tr>
+          
+          <tr>
+            <th class="head-col">
+              
+                <a href = "https://github.com/libp2p/specs/blob/master/rendezvous/README.md" target="_blank">rendezvous 🔗</a>
+              
+            </th>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/rust-libp2p/tree/master/protocols/rendezvous" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/status-im/nim-libp2p/blob/unstable/libp2p/protocols/rendezvous.nim" target="_blank">
+                    
+
+
+
+
+<i class="red icon-hexagon"></i>
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+          </tr>
+          
+          <tr class="empty">
+            <th class="head-col"></th>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+          </tr>
+        </thead>
+      </table>
+    </div>
+  </div>
+  <div class="description">
+    <div><i class="icon-hexagon green"></i><span>Done</span></div>
+    <div><i class="icon-hexagon yellow"></i><span>In Progress / Usable</span></div>
+    <div><i class="icon-hexagon red"></i><span>Prototype / Unstable</span></div>
+    <div><i class="icon-hexagon blue"></i><span>Unimplementable / Unsupported</span></div>
+    <div><i class="icon-hexagon grey"></i><span>Missing</span></div>
+  </div>
+</div>
+</section>
+
+    
+      
+
+<section id="peer-routing">
+<div class="table">
+  <div class="title">
+    <div class="wrapper">
+      <div class="header">
+        
+          Peer Routing
+        
+      </div>
+    </div>
+  </div>
+  <div class="info">
+    <div class="table-wrapper">
+      <table>
+        <tbody>
+          <tr class="head-row">
+            <th class="head-col"></th>
+              
+                <th>Go</th>
+              
+                <th>Rust</th>
+              
+                <th>JavaScript (Node)</th>
+              
+                <th>JavaScript (Browser)</th>
+              
+                <th>Nim</th>
+              
+                <th>C&#43;&#43;</th>
+              
+                <th>Swift</th>
+              
+                <th>JVM</th>
+              
+                <th>Python</th>
+              
+                <th>Erlang</th>
+              
+                <th>Zig</th>
+              
+          </tr>
+          
+          <tr>
+            <th class="head-col">
+              
+                <a href = "https://github.com/libp2p/specs/blob/master/kad-dht/README.md" target="_blank">libp2p-kad-dht 🔗</a>
+              
+            </th>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/go-libp2p-kad-dht" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/rust-libp2p/tree/master/protocols/kad" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/js-libp2p/tree/master/packages/kad-dht" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/js-libp2p/tree/master/packages/kad-dht" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/cpp-libp2p/tree/master/src/protocol/kademlia" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/swift-libp2p/swift-libp2p/tree/main/Sources/LibP2P/Routing" target="_blank">
+                    
+
+
+<i class="yellow icon-hexagon"></i>
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/Peergos/nabu/blob/master/src/main/java/org/peergos/protocol/dht/Kademlia.java" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+          </tr>
+          
+          <tr class="empty">
+            <th class="head-col"></th>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+          </tr>
+        </thead>
+      </table>
+    </div>
+  </div>
+  <div class="description">
+    <div><i class="icon-hexagon green"></i><span>Done</span></div>
+    <div><i class="icon-hexagon yellow"></i><span>In Progress / Usable</span></div>
+    <div><i class="icon-hexagon red"></i><span>Prototype / Unstable</span></div>
+    <div><i class="icon-hexagon blue"></i><span>Unimplementable / Unsupported</span></div>
+    <div><i class="icon-hexagon grey"></i><span>Missing</span></div>
+  </div>
+</div>
+</section>
+
+    
+      
+
+<section id="others">
+<div class="table">
+  <div class="title">
+    <div class="wrapper">
+      <div class="header">
+        
+          Publish/Subscribe
+        
+      </div>
+    </div>
+  </div>
+  <div class="info">
+    <div class="table-wrapper">
+      <table>
+        <tbody>
+          <tr class="head-row">
+            <th class="head-col"></th>
+              
+                <th>Go</th>
+              
+                <th>Rust</th>
+              
+                <th>JavaScript (Node)</th>
+              
+                <th>JavaScript (Browser)</th>
+              
+                <th>Nim</th>
+              
+                <th>C&#43;&#43;</th>
+              
+                <th>Swift</th>
+              
+                <th>JVM</th>
+              
+                <th>Python</th>
+              
+                <th>Erlang</th>
+              
+                <th>Zig</th>
+              
+          </tr>
+          
+          <tr>
+            <th class="head-col">
+              
+                libp2p-floodsub
+              
+            </th>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/go-floodsub" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/rust-libp2p/tree/master/protocols/floodsub" target="_blank">
+                    
+
+
+<i class="yellow icon-hexagon"></i>
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/js-libp2p/tree/master/packages/pubsub-floodsub" target="_blank">
+                    
+
+
+<i class="yellow icon-hexagon"></i>
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/js-libp2p/tree/master/packages/pubsub-floodsub" target="_blank">
+                    
+
+
+<i class="yellow icon-hexagon"></i>
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/status-im/nim-libp2p/blob/unstable/libp2p/protocols/pubsub/floodsub.nim" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/swift-libp2p/swift-libp2p/tree/main/Sources/LibP2P/PubSub" target="_blank">
+                    
+
+
+<i class="yellow icon-hexagon"></i>
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/jvm-libp2p/tree/develop/libp2p/src/main/kotlin/io/libp2p/pubsub/flood" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/py-libp2p/blob/master/libp2p/pubsub/floodsub.py" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+          </tr>
+          
+          <tr>
+            <th class="head-col">
+              
+                <a href = "https://github.com/libp2p/specs/tree/master/pubsub/gossipsub" target="_blank">libp2p-gossipsub 🔗</a>
+              
+            </th>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/go-libp2p-pubsub" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/rust-libp2p/tree/master/protocols/gossipsub" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/ChainSafe/gossipsub-js" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/ChainSafe/gossipsub-js" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/status-im/nim-libp2p/blob/unstable/libp2p/protocols/pubsub/gossipsub.nim" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/cpp-libp2p/tree/master/src/protocol/gossip" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/swift-libp2p/swift-libp2p-core/tree/main/Sources/LibP2PCore/PubSub" target="_blank">
+                    
+
+
+<i class="yellow icon-hexagon"></i>
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/jvm-libp2p/tree/develop/libp2p/src/main/kotlin/io/libp2p/pubsub/gossip" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/py-libp2p/blob/master/libp2p/pubsub/gossipsub.py" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+          </tr>
+          
+          <tr class="empty">
+            <th class="head-col"></th>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+          </tr>
+        </thead>
+      </table>
+    </div>
+  </div>
+  <div class="description">
+    <div><i class="icon-hexagon green"></i><span>Done</span></div>
+    <div><i class="icon-hexagon yellow"></i><span>In Progress / Usable</span></div>
+    <div><i class="icon-hexagon red"></i><span>Prototype / Unstable</span></div>
+    <div><i class="icon-hexagon blue"></i><span>Unimplementable / Unsupported</span></div>
+    <div><i class="icon-hexagon grey"></i><span>Missing</span></div>
+  </div>
+</div>
+</section>
+
+    
+      
+
+<section id="stream-muxers">
+<div class="table">
+  <div class="title">
+    <div class="wrapper">
+      <div class="header">
+        
+          Stream Multiplexing
+        
+      </div>
+    </div>
+  </div>
+  <div class="info">
+    <div class="table-wrapper">
+      <table>
+        <tbody>
+          <tr class="head-row">
+            <th class="head-col"></th>
+              
+                <th>Go</th>
+              
+                <th>Rust</th>
+              
+                <th>JavaScript (Node)</th>
+              
+                <th>JavaScript (Browser)</th>
+              
+                <th>Nim</th>
+              
+                <th>C&#43;&#43;</th>
+              
+                <th>Swift</th>
+              
+                <th>JVM</th>
+              
+                <th>Python</th>
+              
+                <th>Erlang</th>
+              
+                <th>Zig</th>
+              
+          </tr>
+          
+          <tr>
+            <th class="head-col">
+              
+                <a href = "https://github.com/libp2p/specs/blob/master/yamux/README.md" target="_blank">libp2p-yamux 🔗</a>
+              
+            </th>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/go-yamux" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/rust-libp2p/tree/master/muxers/yamux" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/Chainsafe/js-libp2p-yamux" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/Chainsafe/js-libp2p-yamux" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/status-im/nim-libp2p/blob/unstable/libp2p/muxers/yamux/yamux.nim" target="_blank">
+                    
+
+
+<i class="yellow icon-hexagon"></i>
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/cpp-libp2p/tree/master/src/muxer/yamux" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/jvm-libp2p/tree/v1.0.0/libp2p/src/main/kotlin/io/libp2p/mux/yamux" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/helium/erlang-libp2p/tree/master/src" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+          </tr>
+          
+          <tr>
+            <th class="head-col">
+              
+                <a href = "https://github.com/libp2p/specs/blob/master/mplex/README.md" target="_blank">libp2p-mplex 🔗</a>
+              
+            </th>
+            
+              <td>
+                
+                  <a href="https://github.com/whyrusleeping/go-smux-multiplex" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/rust-libp2p/tree/master/muxers/mplex" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/js-libp2p/tree/master/packages/stream-multiplexer-mplex" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/js-libp2p/tree/master/packages/stream-multiplexer-mplex" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/status-im/nim-libp2p/tree/master/libp2p/muxers/mplex" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/cpp-libp2p/tree/master/src/muxer/mplex" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/swift-libp2p/swift-libp2p-mplex" target="_blank">
+                    
+
+
+<i class="yellow icon-hexagon"></i>
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/jvm-libp2p/tree/develop/libp2p/src/main/kotlin/io/libp2p/mux/mplex" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/py-libp2p/tree/master/libp2p/stream_muxer/mplex" target="_blank">
+                    
+
+
+
+
+<i class="red icon-hexagon"></i>
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+          </tr>
+          
+          <tr class="empty">
+            <th class="head-col"></th>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+          </tr>
+        </thead>
+      </table>
+    </div>
+  </div>
+  <div class="description">
+    <div><i class="icon-hexagon green"></i><span>Done</span></div>
+    <div><i class="icon-hexagon yellow"></i><span>In Progress / Usable</span></div>
+    <div><i class="icon-hexagon red"></i><span>Prototype / Unstable</span></div>
+    <div><i class="icon-hexagon blue"></i><span>Unimplementable / Unsupported</span></div>
+    <div><i class="icon-hexagon grey"></i><span>Missing</span></div>
+  </div>
+</div>
+</section>
+
+    
+      
+
+<section id="record-stores">
+<div class="table">
+  <div class="title">
+    <div class="wrapper">
+      <div class="header">
+        
+          Storage
+        
+      </div>
+    </div>
+  </div>
+  <div class="info">
+    <div class="table-wrapper">
+      <table>
+        <tbody>
+          <tr class="head-row">
+            <th class="head-col"></th>
+              
+                <th>Go</th>
+              
+                <th>Rust</th>
+              
+                <th>JavaScript (Node)</th>
+              
+                <th>JavaScript (Browser)</th>
+              
+                <th>Nim</th>
+              
+                <th>C&#43;&#43;</th>
+              
+                <th>Swift</th>
+              
+                <th>JVM</th>
+              
+                <th>Python</th>
+              
+                <th>Erlang</th>
+              
+                <th>Zig</th>
+              
+          </tr>
+          
+          <tr>
+            <th class="head-col">
+              
+                libp2p-record
+              
+            </th>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/go-libp2p-record" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/rust-libp2p/tree/master/protocols/kad" target="_blank">
+                    
+
+
+
+
+<i class="red icon-hexagon"></i>
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/js-libp2p/tree/master/packages/kad-dht/src/record" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/js-libp2p/tree/master/packages/kad-dht/src/record" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/status-im/nim-libp2p/blob/unstable/libp2p/peerstore.nim" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/swift-libp2p/swift-libp2p-core/tree/main/Sources/LibP2PCore/Record" target="_blank">
+                    
+
+
+<i class="yellow icon-hexagon"></i>
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/Peergos/nabu/blob/master/src/main/java/org/peergos/protocol/dht/RecordStore.java" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+          </tr>
+          
+          <tr class="empty">
+            <th class="head-col"></th>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+          </tr>
+        </thead>
+      </table>
+    </div>
+  </div>
+  <div class="description">
+    <div><i class="icon-hexagon green"></i><span>Done</span></div>
+    <div><i class="icon-hexagon yellow"></i><span>In Progress / Usable</span></div>
+    <div><i class="icon-hexagon red"></i><span>Prototype / Unstable</span></div>
+    <div><i class="icon-hexagon blue"></i><span>Unimplementable / Unsupported</span></div>
+    <div><i class="icon-hexagon grey"></i><span>Missing</span></div>
+  </div>
+</div>
+</section>
+
+    
+      
+
+<section id="utils">
+<div class="table">
+  <div class="title">
+    <div class="wrapper">
+      <div class="header">
+        
+          General Purpose Utilities &amp; Datatypes
+        
+      </div>
+    </div>
+  </div>
+  <div class="info">
+    <div class="table-wrapper">
+      <table>
+        <tbody>
+          <tr class="head-row">
+            <th class="head-col"></th>
+              
+                <th>Go</th>
+              
+                <th>Rust</th>
+              
+                <th>JavaScript (Node)</th>
+              
+                <th>JavaScript (Browser)</th>
+              
+                <th>Nim</th>
+              
+                <th>C&#43;&#43;</th>
+              
+                <th>Swift</th>
+              
+                <th>JVM</th>
+              
+                <th>Python</th>
+              
+                <th>Erlang</th>
+              
+                <th>Zig</th>
+              
+          </tr>
+          
+          <tr>
+            <th class="head-col">
+              
+                <a href = "https://github.com/libp2p/specs/blob/master/ping/ping.md" target="_blank">libp2p-ping 🔗</a>
+              
+            </th>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/go-libp2p/tree/master/p2p/protocol/ping" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/rust-libp2p/tree/master/protocols/ping" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/js-libp2p/tree/master/packages/libp2p/src/ping" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/js-libp2p/tree/master/packages/libp2p/src/ping" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/status-im/nim-libp2p/blob/unstable/libp2p/protocols/ping.nim" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/cpp-libp2p/tree/master/src/protocol/ping" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/jvm-libp2p/blob/develop/src/main/kotlin/io/libp2p/protocol/Ping.kt" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+          </tr>
+          
+          <tr>
+            <th class="head-col">
+              
+                libp2p-peer
+              
+            </th>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/go-libp2p/tree/master/core/peer" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/rust-libp2p/tree/master/core/src" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/js-libp2p/tree/master/packages/peer-id" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/js-libp2p/tree/master/packages/peer-id" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/status-im/nim-libp2p/blob/unstable/libp2p/peerid.nim" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/swift-libp2p/swift-libp2p-core/tree/main/Sources/LibP2PCore/Peer" target="_blank">
+                    
+
+
+<i class="yellow icon-hexagon"></i>
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/libp2p/py-libp2p/tree/master/libp2p/peer" target="_blank">
+                    
+
+
+
+
+<i class="red icon-hexagon"></i>
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="https://github.com/helium/erlang-libp2p/tree/master/src/peerbook" target="_blank">
+                    
+<i class="green icon-hexagon"></i>
+
+
+
+
+
+
+
+
+
+
+                  </a>
+                
+              </td>
+            
+              <td>
+                
+                  <a href="" target="_blank">
+                    
+
+
+
+
+
+
+
+
+<i class="grey icon-hexagon"></i>
+
+
+                  </a>
+                
+              </td>
+            
+          </tr>
+          
+          <tr class="empty">
+            <th class="head-col"></th>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+              <td></td>
+            
+          </tr>
+        </thead>
+      </table>
+    </div>
+  </div>
+  <div class="description">
+    <div><i class="icon-hexagon green"></i><span>Done</span></div>
+    <div><i class="icon-hexagon yellow"></i><span>In Progress / Usable</span></div>
+    <div><i class="icon-hexagon red"></i><span>Prototype / Unstable</span></div>
+    <div><i class="icon-hexagon blue"></i><span>Unimplementable / Unsupported</span></div>
+    <div><i class="icon-hexagon grey"></i><span>Missing</span></div>
+  </div>
+</div>
+</section>
+
+    
+
+    </div>
+    <div class="triangle grey"></div>
+  </article>
+</main>
+<!-- include "footer.html" -->
+<footer>
+  <div class="wrap">
+    <div>
+      <p><b>lib</b>p2p was created by</p>
+      <a class="logo" href="https://protocol.ai/">
+        <img src="/img/logo_protocol_labs.svg" class="grow" />
+        <span>Protocol Labs</span>
+      </a>
+    </div>
+    <div>
+      <nav>
+        <a href="https://github.com/libp2p/website">Website source</a>
+      </nav>
+      <small class="db f6 pt4">© <a class="link white hover-blue" href="https://protocol.ai/" target="_blank">Protocol Labs</a> | Except as <a class="link white hover-blue" href="https://protocol.ai/legal/">noted</a>, content licensed <a class="link white hover-blue" href="https://creativecommons.org/licenses/by/3.0/" target="_blank">CC-BY 3.0</a></small>
+    </div>
+  </div>
+</footer>
+<!-- include "footer.html" -->
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/implementations.js"></script>
+</body>
+</html>

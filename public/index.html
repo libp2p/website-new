@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- include "head.html" -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<!-- include "google_analytics.html"-->
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-96910779-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async="" src="//www.google-analytics.com/analytics.js"></script>
+<!-- include "google_analytics.html"-->
+<link rel="shortcut icon" href="/img/favicon.png" type="image/png">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+<meta name="description" content="Run your network applications free from runtime and address services, independently of their location." />
+<meta name="author" content="The libp2p Foundation" />
+ <!-- open graph -->
+<meta property="og:type" content="website" />
+<meta property="og:description" content="Run your network applications free from runtime and address services, independently of their location." />
+<meta property="og:title" content="libp2p - A modular network stack" />
+<meta property="og:site_name" content="libp2p" />
+<meta property="og:url" content="/" />
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="img/logo_small.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="146" />
+<meta property="og:image:height" content="166" />
+<!--Twitter Cards-->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="libp2p" />
+<meta name="twitter:title" content="libp2p - A modular network stack" />
+<meta name="twitter:creator" content="The libp2p Foundation" />
+<meta name="twitter:description" content="Run your network applications free from runtime and address services, independently of their location." />
+<meta name="twitter:domain" content="libp2p.io" />
+<meta name="twitter:image:src" content="img/logo_small.png" />
+<!-- Plausible Analytics -->
+<script defer data-domain="libp2p.io" src="https://plausible.io/js/script.js"></script>
+<!-- include "head.html" -->
+<link rel="stylesheet" type="text/css" href="/css/fontawesome.css">
+<link rel="stylesheet" type="text/css" href="/css/index.css">
+<title>libp2p</title>
+<meta name="google-site-verification" content="NOJDGy-FaS-jVnj08WfJcjpm3r8uDmoacV_D1C9oddc" />
+</head>
+<body>
+<!-- include "topbar.html" -->
+<header>
+  <div class="wrap">
+    <a class="logo " href="/">
+      <img width="60" height="72" src="/img/logo_small.png" alt="">
+      <b>lib</b>p2p
+    </a>
+    <a href='#' class='bars'><i class="fa fa-bars" aria-hidden="true"></i></a>
+    <a href='#' class="close"><i class="fa fa-times" aria-hidden="true"></i></a>
+    <nav>
+      <ul>
+        <li><a href="/implementations" ><i class="fa fa-gear"></i>Implementations</a></li>
+        <li><a href="/media" ><i class="fa fa-film"></i>Media</a></li>
+        <li><a href="https://github.com/libp2p/specs" target="_blank"><i class="fa fa-pen-ruler"></i>Specs</a></li>
+        <li><a href="https://docs.libp2p.io" target="_blank"><i class="fa fa-book"></i>Docs</a></li>
+        <li><a href="https://connectivity.libp2p.io" target="_blank"><i class="fa fa-network-wired"></i>Connectivity</a></li>
+        <li><a href="https://blog.libp2p.io" target="_blank"><i class="fa fa-rss"></i>Blog</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<!-- include "topbar.html" -->
+<main>
+<!-- include "splash.html" -->
+<style>
+  .a-modular-network-stack {
+    display: block;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0);
+    overflow-y: visible;
+    transform: translate3d(0,0,0); /* hint to prefer gpu rending. */
+  }
+
+  .layer {
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: 0;
+    background-color: rgba(0, 0, 0, 0);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: 0px 0px;
+    transform-style: preserve-3d;
+  }
+
+  .module-transports {
+    top: 100px;
+  }
+
+  @keyframes fade {
+      0% { opacity: 0 }
+    100% { opacity: 1 }
+  }
+  .anim-fade {
+    animation: fade 1000ms ease-in both;
+  }
+
+  @keyframes throb {
+      0% { transform: scale(1)}
+     50% { transform: scale(1.05)}
+    100% { transform: scale(1)}
+  }
+
+  #splash-stage {
+    animation: throb 200ms ease-in-out 2200ms both;
+  }
+
+  #splash-headline {
+    animation: fade 1000ms ease-in 800ms both;
+  }
+
+  @keyframes rise {
+      0% { transform: translate(0, 50px)}
+    100% { transform: translate(0, 0px)}
+  }
+
+  #splash-subhead {
+    animation:
+      fade 500ms ease-in 2400ms both,
+      rise 500ms ease-in 2200ms both;
+  }
+  #splash-subhead * {
+    opacity: 1;
+  }
+</style>
+<article class="a-modular-network-stack" style="overflow:hidden;">
+  <div style="height:475px;" id="splash-stage">
+    <div class="layer module-transports anim-fade">
+      <img src="/img/svg/transports.svg" alt="Transports" title="Transports">
+    </div><style>
+  @keyframes blue-2 {
+    0% {
+      transform: translate(-31.8%, 346px);
+    }
+    84% {
+      transform: translate(-31.8%, 346px);
+    }
+    100% {
+      transform: translate(-55px, 234px);
+    }
+  }
+  #blue-2 {
+    animation: blue-2 2000ms ease-in both;
+    animation-play-state: running;
+  }
+</style>
+<div id="blue-2" class="layer">
+  <img src="/img/svg/blue-2.svg" alt="" title="" class="anim-fade" style="margin:0 auto; animation-delay: 0ms" />
+</div>
+<style>
+  @keyframes discovery {
+    0% {
+      transform: translate(39.8%, 297px);
+    }
+    84% {
+      transform: translate(39.8%, 297px);
+    }
+    100% {
+      transform: translate(37px, 213px);
+    }
+  }
+  #discovery {
+    animation: discovery 2000ms ease-in both;
+    animation-play-state: running;
+  }
+</style>
+<div id="discovery" class="layer">
+  <img src="/img/svg/discovery.svg" alt="" title="" class="anim-fade" style="margin:0 auto; animation-delay: 100ms" />
+</div>
+<style>
+  @keyframes stream-muxers {
+    0% {
+      transform: translate(14%, 40px);
+    }
+    84% {
+      transform: translate(14%, 40px);
+    }
+    100% {
+      transform: translate(36px, 121px);
+    }
+  }
+  #stream-muxers {
+    animation: stream-muxers 2000ms ease-in both;
+    animation-play-state: running;
+  }
+</style>
+<div id="stream-muxers" class="layer">
+  <img src="/img/svg/stream-muxers.svg" alt="" title="" class="anim-fade" style="margin:0 auto; animation-delay: 200ms" />
+</div>
+<style>
+  @keyframes crypto-channels {
+    0% {
+      transform: translate(-26.8%, 37px);
+    }
+    84% {
+      transform: translate(-26.8%, 37px);
+    }
+    100% {
+      transform: translate(-18px, 121px);
+    }
+  }
+  #crypto-channels {
+    animation: crypto-channels 2000ms ease-in both;
+    animation-play-state: running;
+  }
+</style>
+<div id="crypto-channels" class="layer">
+  <img src="/img/svg/crypto-channels.svg" alt="" title="" class="anim-fade" style="margin:0 auto; animation-delay: 300ms" />
+</div>
+<style>
+  @keyframes connection-upgrades {
+    0% {
+      transform: translate(-42.2%, 178px);
+    }
+    84% {
+      transform: translate(-42.2%, 178px);
+    }
+    100% {
+      transform: translate(-73px, 142px);
+    }
+  }
+  #connection-upgrades {
+    animation: connection-upgrades 2000ms ease-in both;
+    animation-play-state: running;
+  }
+</style>
+<div id="connection-upgrades" class="layer">
+  <img src="/img/svg/connection-upgrades.svg" alt="" title="" class="anim-fade" style="margin:0 auto; animation-delay: 400ms" />
+</div>
+<style>
+  @keyframes others {
+    0% {
+      transform: translate(13.5%, 346px);
+    }
+    84% {
+      transform: translate(13.5%, 346px);
+    }
+    100% {
+      transform: translate(18px, 256px);
+    }
+  }
+  #others {
+    animation: others 2000ms ease-in both;
+    animation-play-state: running;
+  }
+</style>
+<div id="others" class="layer">
+  <img src="/img/svg/others.svg" alt="" title="" class="anim-fade" style="margin:0 auto; animation-delay: 500ms" />
+</div>
+<style>
+  @keyframes orange-1 {
+    0% {
+      transform: translate(calc(-15.5% - 18px), 259px);
+    }
+    84% {
+      transform: translate(calc(-15.5% - 18px), 259px);
+    }
+    100% {
+      transform: translate(-36px, 211px);
+    }
+  }
+  #orange-1 {
+    animation: orange-1 2000ms ease-in both;
+    animation-play-state: running;
+  }
+</style>
+<div id="orange-1" class="layer">
+  <img src="/img/svg/orange-1.svg" alt="" title="" class="anim-fade" style="margin:0 auto; animation-delay: 600ms" />
+</div>
+<style>
+  @keyframes nat-traversal {
+    0% {
+      transform: translate(35.4%, 37px);
+    }
+    84% {
+      transform: translate(35.4%, 37px);
+    }
+    100% {
+      transform: translate(55px, 142px);
+    }
+  }
+  #nat-traversal {
+    animation: nat-traversal 2000ms ease-in both;
+    animation-play-state: running;
+  }
+</style>
+<div id="nat-traversal" class="layer">
+  <img src="/img/svg/nat-traversal.svg" alt="" title="" class="anim-fade" style="margin:0 auto; animation-delay: 800ms" />
+</div>
+<style>
+  @keyframes utils {
+    0% {
+      transform: translate(-7.6%, 365px);
+    }
+    84% {
+      transform: translate(-7.6%, 365px);
+    }
+    100% {
+      transform: translate(0px, 231px);
+    }
+  }
+  #utils {
+    animation: utils 2000ms ease-in both;
+    animation-play-state: running;
+  }
+</style>
+<div id="utils" class="layer">
+  <img src="/img/svg/utils.svg" alt="" title="" class="anim-fade" style="margin:0 auto; animation-delay: 900ms" />
+</div>
+<style>
+  @keyframes record-stores {
+    0% {
+      transform: translate(22.6%, 225px);
+    }
+    84% {
+      transform: translate(22.6%, 225px);
+    }
+    100% {
+      transform: translate(36px, 164px);
+    }
+  }
+  #record-stores {
+    animation: record-stores 2000ms ease-in both;
+    animation-play-state: running;
+  }
+</style>
+<div id="record-stores" class="layer">
+  <img src="/img/svg/record-stores.svg" alt="" title="" class="anim-fade" style="margin:0 auto; animation-delay: 700ms" />
+</div>
+<style>
+  @keyframes orange-2 {
+    0% {
+      transform: translate(-15.5%, 211px);
+    }
+    84% {
+      transform: translate(-15.5%, 211px);
+    }
+    100% {
+      transform: translate(-18px, 164px);
+    }
+  }
+  #orange-2 {
+    animation: orange-2 2000ms ease-in both;
+    animation-play-state: running;
+  }
+</style>
+<div id="orange-2" class="layer">
+  <img src="/img/svg/orange-2.svg" alt="" title="" class="anim-fade" style="margin:0 auto; animation-delay: 600ms" />
+</div>
+</div>
+  <div class="wrap" style="padding-bottom:30px;">
+    <h2 id="splash-headline"><span>A</span> <span>modular</span> <span>network</span> <span>stack.</span></h2>
+    <div id="splash-subhead">
+      <p style="margin-top:0;"><b>lib</b>p2p is an open source project for
+        building network applications free from runtime and address services.
+        You can help define the specification, create applications using
+        libp2p, and craft examples and tutorials to get involved.</p>
+      <div class="buttons" style="text-align:center;">
+        <div class="dropdown">
+          <input id="cb-code" type="checkbox"></input>
+          <label for="cb-code" class="btn-socials btn-code"><i class="fa fa-code-branch"></i>CODE</label>
+          <div class="dropdown-content">
+            <a href="https://github.com/libp2p/libp2p?tab=readme-ov-file#implementations"><i class="fa-brands fa-github"></i>Implementations</a>
+            <a href="https://github.com/libp2p/specs"><i class="fa-brands fa-github"></i>Specifications</a>
+            <a href="https://docs.libp2p.io"><i class="fa-brands fa-github"></i>Documentation</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <input id="cb-forums" type="checkbox"></input>
+          <label for="cb-forums" class="btn-socials btn-forums"><i class="fa fa-comments"></i>FORUMS</label>
+          <div class="dropdown-content">
+            <a href="https://discuss.libp2p.io"><i class="fa-brands fa-discourse"></i>Community</a>
+            <a href="https://github.com/libp2p/specs/discussions"><i class="fa-brands fa-github-alt"></i>Specifications</a>
+            <a href="https://github.com/libp2p/libp2p?tab=readme-ov-file#disussion"><i class="fa-brands fa-github-alt"></i>Technical</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <input id="cb-chat" type="checkbox"></input>
+          <label for="cb-chat" class="btn-socials btn-chat"><i class="fa fa-comment-dots"></i>CHAT</label>
+          <div class="dropdown-content">
+            <a href="https://filecoinproject.slack.com/archives/C06HV0D00E5"><i class="fa-brands fa-discourse"></i>Community</a>
+            <a href="https://filecoinproject.slack.com/archives/C03K82MU486"><i class="fa-brands fa-discourse"></i>Implementers</a>
+            <a href="https://discord.gg/9R7uhF5D"><i class="fa-brands fa-discord"></i>Community</a>
+            <a href="https://discord.gg/2FPVa6Xy"><i class="fa-brands fa-discord"></i>Implementers</a>
+            <a href="https://t.me/libp2p_community/11"><i class="fa-brands fa-telegram"></i>Community</a>
+            <a href="https://t.me/libp2p_community/5"><i class="fa-brands fa-telegram"></i>Implementers</a>
+            <a href="https://matrix.to/#/#libp2p-community:matrix.org"><i class="fa-brands fa-m"></i>Community</a>
+            <a href="https://matrix.to/#/#libp2p-implementers:ipfs.io"><i class="fa-brands fa-m"></i>Implementers</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <input id="cb-socials" type="checkbox"></input>
+          <label for="cb-socials" class="btn-socials btn-social"><i class="fa fa-share-nodes"></i>SOCIAL MEDIA</label>
+          <div class="dropdown-content">
+            <a href="https://twitter.com/libp2p"><i class="fa-brands fa-twitter"></i>@libp2p</a>
+            <a href="https://bsky.app/profile/libp2p.bsky.social"><i class="fa fa-comment"></i>@libp2p</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <iframe
+      src="https://lu.ma/embed/calendar/cal-7CPAnJtz4A4aj2X/events?compact=true&lt=light"
+      width="100%"
+      height="450"
+      frameborder="0"
+      style="border: 1px solid #bfcbda88; border-radius: 4px;"
+      allowfullscreen=""
+      aria-hidden="false"
+      tabindex="0"
+    ></iframe>
+  </div>
+  <img class="decoration img1" width="61" height="85" src="/img/img1.png" alt="">
+  <img class="decoration img2" width="41" height="99" src="/img/img2.png" alt="">
+  <div class="triangle white"></div>
+</article>
+<!-- include "splash.html" -->
+<!-- include "features.html" -->
+<article class="center features">
+  <h1>Features</h1>
+  <div class="wrap">
+      <div class="card">
+          <a class="rectangle">
+              <img width="184" height="130" src="/img/img_1.png" alt="">
+              <div>Use Several Transports</div>
+              <p>Use newer and faster transports like QUIC and WebRTC. At the same time, we support well-established transports like TCP,
+                 and support multiple hosts and connectivity conditions.</p>
+          </a>
+      </div>
+      <div class="card">
+          <a class="rectangle">
+              <img width="184" height="130" src="/img/img_2.png" alt="">
+              <div>Native Roaming</div>
+              <p>You get Native Roaming out of the box. Your app or service can be migrated between machines or move between networks without any configuration steps.</p>
+          </a>
+      </div>
+      <div class="card">
+          <a class="rectangle">
+              <img width="184" height="130" src="/img/img_3.png" alt="">
+              <div>Runtime Freedom</div>
+              <p>Simply assume connectivity, independent of the platform you are running your software on.</p>
+          </a>
+      </div>
+      <div class="card">
+          <a class="rectangle">
+              <img width="192" height="130" src="/img/img_4.png" alt="">
+              <div>Protocol Muxing</div>
+              <p>Reuse already established and secure connections with in-band protocol multiplexing.</p>
+          </a>
+      </div>
+      <div class="card">
+          <a class="rectangle">
+              <img width="184" height="130" src="/img/img_5.png" alt="">
+              <div>Work Offline</div>
+              <p>libp2p is capable of discovering other peers without resourcing to centralized registries,
+                 enabling apps to work disconnected from the backbone.</p>
+          </a>
+      </div>
+      <div class="card">
+          <a class="rectangle">
+              <img width="184" height="130" src="/img/img_6.png" alt="">
+              <div>Encrypted Connections</div>
+              <p>Ensure that no one can eavesdrop on user traffic by setting a crypto channel by default,
+                 protecting both bits and validating peer identities.</p>
+          </a>
+      </div>
+      <div class="card">
+          <a class="rectangle">
+              <img width="189" height="130" src="/img/img_7.png" alt="">
+              <div>Upgrade Without Compromises</div>
+              <p>Don't let past decisions hold your application back. Wire protocol versioning allows you to
+                 upgrade your service while still supporting older versions, no complicated setup necessary.</p>
+          </a>
+      </div>
+      <div class="card">
+          <a class="rectangle">
+              <img width="183" height="130" src="/img/img_8.png" alt="">
+              <div>Work In The Browser</div>
+              <p>Write your application to run in the browser and take advantage of the ultimate in cross platform environments and with zero user install.</p>
+          </a>
+      </div>
+      <div class="card">
+          <a class="rectangle">
+              <img width="184" height="130" src="/img/img_9.png" alt="">
+              <div>Good For High Latency Scenarios</div>
+              <p>Not all connections are equal. Make sure your app is using the best transport for its environment.</p>
+          </a>
+      </div>
+  </div>
+  <img class="decoration img3" width="61" height="61" src="/img/img3.png" alt="">
+  <img class="decoration img4" width="82" height="60" src="/img/img4.png" alt="">
+  <div class="triangle grey"></div>
+</article>
+<!-- include "features.html" -->
+</main>
+<!-- include "footer.html" -->
+<footer>
+  <div class="wrap">
+    <div>
+      <p><b>lib</b>p2p was created by</p>
+      <a class="logo" href="https://protocol.ai/">
+        <img src="/img/logo_protocol_labs.svg" class="grow" />
+        <span>Protocol Labs</span>
+      </a>
+    </div>
+    <div>
+      <nav>
+        <a href="https://github.com/libp2p/website">Website source</a>
+      </nav>
+      <small class="db f6 pt4">© <a class="link white hover-blue" href="https://protocol.ai/" target="_blank">Protocol Labs</a> | Except as <a class="link white hover-blue" href="https://protocol.ai/legal/">noted</a>, content licensed <a class="link white hover-blue" href="https://creativecommons.org/licenses/by/3.0/" target="_blank">CC-BY 3.0</a></small>
+    </div>
+  </div>
+</footer>
+<!-- include "footer.html" -->
+<script type="text/javascript" src="/js/common.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+</body>
+</html>
