@@ -1,0 +1,36 @@
+<article class="center schedule">
+  <h2 id="schedule">Schedule</h2>
+  <div class="wrap">
+    {% set schedule = load_data(path="content/ethdenver-schedule-2024.json") %}
+    {% for talk in schedule %}
+    <div class="row">
+      <div class="column left">
+        <div class="rectangle-left">
+          <h2>{{talk.time}}</h2>
+          <p><b>Where:</b> {{talk.where}}</p>
+          <p><b>Who:</b> {{talk.who}}</p>
+          <p><b>What:</b> {{talk.what|safe}}</p>
+        </div>
+      </div>
+      <div class="column right">
+        <div class="rectangle-right">
+          <ul>
+            <li>
+              {% if talk.headshots[0] %}
+              <img src="{{talk.headshots[0]|safe}}"></img>
+              {% endif %}
+              {% if talk.headshots[1] %}
+              <img src="{{talk.headshots[1]|safe}}"></img>
+              {% endif %}
+              <h2 style="width:100%;">{{talk.title}}</h2>
+              <p style="width:100%">{{talk.description}}</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+
+  </div>
+  <div class="triangle grey"></div>
+</article>

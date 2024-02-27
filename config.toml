@@ -1,0 +1,50 @@
+# The URL the site will be built for
+base_url = "https://libp2p.io"
+
+# Whether to automatically compile all Sass files in the sass directory
+# false for now until scss gets converted/fixed
+compile_sass = false
+
+# Whether to build a search index to be used later on by a JavaScript library
+build_search_index = false
+
+title = "libp2p - A modular network stack"
+description = "Run your network applications free from runtime and address services, independently of their location."
+author = "The libp2p Foundation"
+
+[markdown]
+# Whether to do syntax highlighting
+# Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
+highlight_code = true
+
+[extra]
+# Put all your custom variables here
+# access with {{ config.extra.var_name }}
+name = "libp2p"
+domain = "libp2p.io"
+github = "https://github.com/libp2p/libp2p"
+implementations = "https://github.com/libp2p/libp2p?tab=readme-ov-file#implementations"
+site_repo = "https://github.com/libp2p/website"
+specs_repo = "https://github.com/libp2p/specs"
+docs_repo = "https://docs.libp2p.io"
+blog_url = "https://blog.libp2p.io"
+connectivity_url = "https://connectivity.libp2p.io"
+
+# discussion forums
+libp2p_community = "https://discuss.libp2p.io"
+libp2p_specifications = "https://github.com/libp2p/specs/discussions"
+libp2p_technical = "https://github.com/libp2p/libp2p?tab=readme-ov-file#disussion"
+
+# chat rooms
+slack_community = "https://filecoinproject.slack.com/archives/C06HV0D00E5"
+slack_implementers = "https://filecoinproject.slack.com/archives/C03K82MU486"
+discord_community = "https://discord.gg/9R7uhF5D"
+discord_implementers = "https://discord.gg/2FPVa6Xy"
+telegram_community = "https://t.me/libp2p_community/11"
+telegram_implementers =  "https://t.me/libp2p_community/5"
+matrix_community = "https://matrix.to/#/#libp2p-community:matrix.org"
+matrix_implementers = "https://matrix.to/#/#libp2p-implementers:ipfs.io"
+
+# social media feeds
+twitter_feed = "https://twitter.com/libp2p"
+bluesky_feed = "https://bsky.app/profile/libp2p.bsky.social"

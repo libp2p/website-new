@@ -1,0 +1,20 @@
+<header>
+  <div class="wrap">
+    <a class="logo {% if current_path in ["/implementations/","/media/"] %} static {% endif %}" href="/">
+      <img width="60" height="72" src="/img/logo_small.png" alt="">
+      <b>lib</b>p2p
+    </a>
+    <a href='#' class='bars'><i class="fa fa-bars" aria-hidden="true"></i></a>
+    <a href='#' class="close"><i class="fa fa-times" aria-hidden="true"></i></a>
+    <nav>
+      <ul>
+        <li><a href="/implementations" {% if current_path is matching("/implementations/") %} class="active" {% endif %}><i class="fa fa-gear"></i>Implementations</a></li>
+        <li><a href="/media" {% if current_path is matching("/media/") %} class="active" {% endif %}><i class="fa fa-film"></i>Media</a></li>
+        <li><a href="{{ config.extra.specs_repo | safe }}" target="_blank"><i class="fa fa-pen-ruler"></i>Specs</a></li>
+        <li><a href="{{ config.extra.docs_repo | safe }}" target="_blank"><i class="fa fa-book"></i>Docs</a></li>
+        <li><a href="{{ config.extra.connectivity_url | safe }}" target="_blank"><i class="fa fa-network-wired"></i>Connectivity</a></li>
+        <li><a href="{{ config.extra.blog_url | safe }}" target="_blank"><i class="fa fa-rss"></i>Blog</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>

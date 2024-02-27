@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- include "head.html" -->
+{% include "head.html" -%}
+<!-- include "head.html" -->
+<link rel="stylesheet" type="text/css" href="/css/implementations.css">
+<title>Implementations - libp2p</title>
+</head>
+
+<body>
+<!-- include "topbar.html" -->
+{% include "topbar.html" -%}
+<!-- include "topbar.html" -->
+<main>
+  <article class="center implementations">
+    <h1>Implementations</h1>
+    <div class="wrap">
+      <p>libp2p is composed of many modules and different parts. Here, overviews are available for all the different libraries, along with the 
+        status of each implementation. All sections use the same status legend and link to the implementation's source code.</p>
+      <div class="links">
+        <div class="active-link">
+          <div class="copy-block">
+            <div class="img">
+              <img width="10" src="/img/svg/transports.svg" alt="Transports">
+            </div>
+            <span>Transports</span>
+          </div>
+          <i class="fa fa-angle-down" aria-hidden="true"></i>
+        </div>
+
+        <div class="columns">
+          <div class="column col1">
+            <a href="#connection-upgrades" class="link scroll">
+              <div class="img">
+                <img width="10" src="/img/svg/connection-upgrades.svg" alt="Supported Implementations">
+              </div>
+              <span>Supported Implementations</span>
+            </a>
+            <a href="#transports" class="link scroll">
+              <div class="img">
+                <img width="10" src="/img/svg/transports.svg" alt="Transports">
+              </div>
+              <span>Transports</span>
+            </a>
+            <a href="#nat-traversal" class="link scroll">
+              <div class="img">
+                <img width="14" src="/img/svg/nat-traversal.svg" alt="NAT traversal">
+              </div>
+              <span>NAT Traversal</span>
+            </a>
+            <a href="#crypto-channels" class="link scroll">
+              <div class="img">
+                <img width="14" src="/img/svg/crypto-channels.svg" alt="Secure Communication">
+              </div>
+              <span>Secure Communication</span>
+            </a>
+          </div>
+          <div class="column col2">
+            <a href="#discovery" class="link scroll">
+              <div class="img">
+                <img width="18" src="/img/svg/discovery.svg" alt="Discovery">
+              </div>
+              <span>Discovery</span>
+            </a>
+            <a href="#peer-routing" class="link scroll">
+              <div class="img">
+                <img width="13" src="/img/svg/peer-routing.svg" alt="Peer routing">
+              </div>
+              <span>Peer Routing</span>
+            </a>
+            <a href="#others" class="link scroll">
+              <div class="img">
+                <img width="13" src="/img/svg/others.svg" alt="Publish/subscribe">
+              </div>
+              <span>Publish/Subscribe</span>
+            </a>
+          </div>
+          <div class="column col3">
+            <a href="#stream-muxers" class="link scroll">
+              <div class="img">
+                <img width="10" src="/img/svg/stream-muxers.svg" alt="Stream Multiplexing">
+              </div>
+              <span>Stream Multiplexing</span>
+            </a>
+            <a href="#record-stores" class="link scroll">
+              <div class="img">
+                <img width="10" src="/img/svg/record-stores.svg" alt="Storage">
+              </div>
+              <span>Storage</span>
+            </a>
+            <a href="#utils" class="link scroll">
+              <div class="img">
+                <img width="10" src="/img/svg/utils.svg" alt="General purpose utils & datatypes">
+              </div>
+              <span>General Purpose Utilities & Datatypes</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="triangle white"></div>
+  </article>
+
+  <div class="cube img">
+    <div class="cubes-wrapper">
+      <img class="cube-shape" width="125" src="/img/svg/cube_shape.svg" alt="cube_shape">
+      <img class="cubes transports" width="46" src="/img/svg/transports.svg" alt="">
+      <img class="cubes stream-muxers" width="46" src="/img/svg/stream-muxers.svg" alt="">
+      <img class="cubes crypto-channels" width="46" src="/img/svg/crypto-channels.svg" alt="">
+      <img class="cubes connection-upgrades" width="46" src="/img/svg/connection-upgrades.svg" alt="">
+      <img class="cubes peer-routing" width="46" src="/img/svg/peer-routing.svg" alt="">
+      <img class="cubes record-stores" width="46" src="/img/svg/record-stores.svg" alt="">
+      <img class="cubes nat-traversal" width="46" src="/img/svg/nat-traversal.svg" alt="">
+      <img class="cubes discovery" width="46" src="/img/svg/discovery.svg" alt="">
+      <img class="cubes utils" width="46" src="/img/svg/utils.svg" alt="">
+      <img class="cubes others" width="46" src="/img/svg/others.svg" alt="">
+    </div>
+  </div>
+
+  <article class="center implementations-info">
+    <div class="wrap">
+    {% set categories = ["connection_upgrades","transports","nat_traversal","crypto_channels","discovery","peer_routing","others","stream_muxers","record_stores","utils"] %}
+    {% for category in categories %}
+      {% include "implementation.html" (index $.Site.Data.implementations .) %}
+    {% endfor %}
+    </div>
+    <div class="triangle grey"></div>
+  </article>
+
+</main>
+<!-- include "footer.html" -->
+{% include "footer.html" -%}
+<!-- include "footer.html" -->
+<script type="text/javascript" src="/js/common.js"></script>
+<script type="text/javascript" src="/js/implementations.js"></script>
+</body>
+</html>

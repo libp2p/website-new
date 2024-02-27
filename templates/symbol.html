@@ -1,0 +1,22 @@
+{%- macro place(id, start, end, fadeDelay, name="") -%}
+<style>
+  @keyframes {{ id }} {
+    0% {
+      transform: {{ start | safe }};
+    }
+    84% {
+      transform: {{ start | safe }};
+    }
+    100% {
+      transform: {{ end | safe }};
+    }
+  }
+  #{{ id }} {
+    animation: {{ id }} 2000ms ease-in both;
+    animation-play-state: running;
+  }
+</style>
+<div id="{{ id }}" class="layer">
+  <img src="/img/svg/{{ id }}.svg" alt="{{ name }}" title="{{ name }}" class="anim-fade" style="margin:0 auto; animation-delay: {{ fadeDelay }}" />
+</div>
+{% endmacro %}

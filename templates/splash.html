@@ -1,0 +1,147 @@
+{% import "symbol.html" as symbol %}
+<style>
+  .a-modular-network-stack {
+    display: block;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0);
+    overflow-y: visible;
+    transform: translate3d(0,0,0); /* hint to prefer gpu rending. */
+  }
+
+  .layer {
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: 0;
+    background-color: rgba(0, 0, 0, 0);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: 0px 0px;
+    transform-style: preserve-3d;
+  }
+
+  .module-transports {
+    top: 100px;
+  }
+
+  @keyframes fade {
+      0% { opacity: 0 }
+    100% { opacity: 1 }
+  }
+  .anim-fade {
+    animation: fade 1000ms ease-in both;
+  }
+
+  @keyframes throb {
+      0% { transform: scale(1)}
+     50% { transform: scale(1.05)}
+    100% { transform: scale(1)}
+  }
+
+  #splash-stage {
+    animation: throb 200ms ease-in-out 2200ms both;
+  }
+
+  #splash-headline {
+    animation: fade 1000ms ease-in 800ms both;
+  }
+
+  @keyframes rise {
+      0% { transform: translate(0, 50px)}
+    100% { transform: translate(0, 0px)}
+  }
+
+  #splash-subhead {
+    animation:
+      fade 500ms ease-in 2400ms both,
+      rise 500ms ease-in 2200ms both;
+  }
+  #splash-subhead * {
+    opacity: 1;
+  }
+</style>
+<article class="a-modular-network-stack" style="overflow:hidden;">
+  <div style="height:475px;" id="splash-stage">
+    <div class="layer module-transports anim-fade">
+      <img src="/img/svg/transports.svg" alt="Transports" title="Transports">
+    </div>
+    {{- symbol::place(id="blue-2", start="translate(-31.8%, 346px)", end="translate(-55px, 234px)", fadeDelay="0ms") -}}
+    {{- symbol::place(id="discovery", start="translate(39.8%, 297px)", end="translate(37px, 213px)", fadeDelay="100ms") -}}
+    {{- symbol::place(id="stream-muxers", start="translate(14%, 40px)", end="translate(36px, 121px)", fadeDelay="200ms") -}}
+    {{- symbol::place(id="crypto-channels", start="translate(-26.8%, 37px)", end="translate(-18px, 121px)", fadeDelay="300ms") -}}
+    {{- symbol::place(id="connection-upgrades", start="translate(-42.2%, 178px)", end="translate(-73px, 142px)", fadeDelay="400ms") -}}
+    {{- symbol::place(id="others", start="translate(13.5%, 346px)", end="translate(18px, 256px)", fadeDelay="500ms") -}}
+    {{- symbol::place(id="orange-1", start="translate(calc(-15.5% - 18px), 259px)", end="translate(-36px, 211px)", fadeDelay="600ms") -}}
+    {{- symbol::place(id="nat-traversal", start="translate(35.4%, 37px)", end="translate(55px, 142px)", fadeDelay="800ms") -}}
+    {{- symbol::place(id="utils", start="translate(-7.6%, 365px)", end="translate(0px, 231px)", fadeDelay="900ms") -}}
+    {{- symbol::place(id="record-stores", start="translate(22.6%, 225px)", end="translate(36px, 164px)", fadeDelay="700ms") -}}
+    {{- symbol::place(id="orange-2", start="translate(-15.5%, 211px)", end="translate(-18px, 164px)", fadeDelay="600ms") -}}
+  </div>
+  <div class="wrap" style="padding-bottom:30px;">
+    <h2 id="splash-headline"><span>A</span> <span>modular</span> <span>network</span> <span>stack.</span></h2>
+    <div id="splash-subhead">
+      <p style="margin-top:0;"><b>lib</b>p2p is an open source project for
+        building network applications free from runtime and address services.
+        You can help define the specification, create applications using
+        libp2p, and craft examples and tutorials to get involved.</p>
+      <div class="buttons" style="text-align:center;">
+        <div class="dropdown">
+          <input id="cb-code" type="checkbox"></input>
+          <label for="cb-code" class="btn-socials btn-code"><i class="fa fa-code-branch"></i>CODE</label>
+          <div class="dropdown-content">
+            <a href="{{ config.extra.implementations | safe }}"><i class="fa-brands fa-github"></i>Implementations</a>
+            <a href="{{ config.extra.specs_repo | safe }}"><i class="fa-brands fa-github"></i>Specifications</a>
+            <a href="{{ config.extra.docs_repo | safe }}"><i class="fa-brands fa-github"></i>Documentation</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <input id="cb-forums" type="checkbox"></input>
+          <label for="cb-forums" class="btn-socials btn-forums"><i class="fa fa-comments"></i>FORUMS</label>
+          <div class="dropdown-content">
+            <a href="{{ config.extra.libp2p_community | safe }}"><i class="fa-brands fa-discourse"></i>Community</a>
+            <a href="{{ config.extra.libp2p_specifications | safe }}"><i class="fa-brands fa-github-alt"></i>Specifications</a>
+            <a href="{{ config.extra.libp2p_technical | safe }}"><i class="fa-brands fa-github-alt"></i>Technical</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <input id="cb-chat" type="checkbox"></input>
+          <label for="cb-chat" class="btn-socials btn-chat"><i class="fa fa-comment-dots"></i>CHAT</label>
+          <div class="dropdown-content">
+            <a href="{{ config.extra.slack_community | safe }}"><i class="fa-brands fa-discourse"></i>Community</a>
+            <a href="{{ config.extra.slack_implementers | safe }}"><i class="fa-brands fa-discourse"></i>Implementers</a>
+            <a href="{{ config.extra.discord_community | safe }}"><i class="fa-brands fa-discord"></i>Community</a>
+            <a href="{{ config.extra.discord_implementers | safe }}"><i class="fa-brands fa-discord"></i>Implementers</a>
+            <a href="{{ config.extra.telegram_community | safe }}"><i class="fa-brands fa-telegram"></i>Community</a>
+            <a href="{{ config.extra.telegram_implementers | safe }}"><i class="fa-brands fa-telegram"></i>Implementers</a>
+            <a href="{{ config.extra.matrix_community | safe }}"><i class="fa-brands fa-m"></i>Community</a>
+            <a href="{{ config.extra.matrix_implementers | safe }}"><i class="fa-brands fa-m"></i>Implementers</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <input id="cb-socials" type="checkbox"></input>
+          <label for="cb-socials" class="btn-socials btn-social"><i class="fa fa-share-nodes"></i>SOCIAL MEDIA</label>
+          <div class="dropdown-content">
+            <a href="{{ config.extra.twitter_feed | safe }}"><i class="fa-brands fa-twitter"></i>@libp2p</a>
+            <a href="{{ config.extra.bluesky_feed | safe }}"><i class="fa fa-comment"></i>@libp2p</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <iframe
+      src="https://lu.ma/embed/calendar/cal-7CPAnJtz4A4aj2X/events?compact=true&lt=light"
+      width="100%"
+      height="450"
+      frameborder="0"
+      style="border: 1px solid #bfcbda88; border-radius: 4px;"
+      allowfullscreen=""
+      aria-hidden="false"
+      tabindex="0"
+    ></iframe>
+  </div>
+  <img class="decoration img1" width="61" height="85" src="/img/img1.png" alt="">
+  <img class="decoration img2" width="41" height="99" src="/img/img2.png" alt="">
+  <div class="triangle white"></div>
+</article>
