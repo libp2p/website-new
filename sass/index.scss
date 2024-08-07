@@ -310,6 +310,36 @@ article.features {
   }
 }
 
+article.security {
+  background: white;
+  padding-bottom: 180px;
+  @media (max-width: 767px) {
+    padding-bottom: 88px;
+  }
+  .wrap {
+    margin-top: 55px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    @media (max-width: 1200px) {
+      justify-content: flex-start;
+    }
+    @media (max-width: 767px) {
+      margin-top: 40px;
+      .card {
+        width: 165px;
+        height: 145px;
+      }
+
+      .rectangle {
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
+
+
 article.example {
   padding-bottom: 97px;
   .wrap {

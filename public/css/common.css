@@ -3390,7 +3390,7 @@ body>header .wrap nav ul li:nth-child(6) a:hover{
 }
 main{
     padding-top:70px;
-    padding-bottom:60px
+    /*padding-bottom:60px*/
 }
 .h1,h1{
     text-align:center;
@@ -3399,9 +3399,20 @@ main{
     margin:0;
     font-size:65px
 }
+.h2,h2{
+    text-align:center;
+    font-family:Roboto-Black;
+    color:#48505D;
+    margin:0;
+    font-size:35px
+}
 @media (max-width:767px){
     .h1,h1{
         font-size:36px;
+        text-align:center
+    }
+    .h2,h2{
+        font-size:30px;
         text-align:center
     }
 }
@@ -3425,6 +3436,7 @@ main{
 }
 footer{
     color:#48505d;
+    background:#f3f6f9;
     padding:32px
 }
 footer .logo{
