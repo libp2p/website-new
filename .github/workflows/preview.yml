@@ -88,10 +88,14 @@ jobs:
         run: |
           aws --endpoint-url https://s3.filebase.com \
             s3 cp preview.car \
-            s3://${{ secrets.FILEBASE_BUCKET_PREVIEW }}/${{ steps.vars.outputs.prefix }}site.car \
+            s3://libp2p-preview/${{ steps.vars.outputs.prefix }} \
             --content-type application/car \
             --metadata import=car \
             --debug > upload.log 2>&1
+
+          echo "===== LOG ====="
+          cat upload.log
+          echo "==============="
 
           # Extract CID from debug log (x-amz-meta-cid header)
           CID=$(grep -i 'x-amz-meta-cid' upload.log | awk -F': ' '{print $2}' | tr -d '\r')
