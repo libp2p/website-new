@@ -54,7 +54,7 @@ jobs:
         run: npm install -g ipfs-car
 
       - name: Create CAR archive of public folder
-        run: ipfs-car --pack ./public --output preview.car
+        run: ipfs-car pack ./public --output preview.car
 
       - name: Configure AWS credentials for Filebase
         uses: aws-actions/configure-aws-credentials@v4
