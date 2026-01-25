@@ -51,7 +51,7 @@ jobs:
 
       - name: Install ipfs-car (if not cached)
         if: steps.cache-ipfs-car.outputs.cache-hit != 'true'
-        run: npm install -g @web3-storage/ipfs-car
+        run: npm install -g ipfs-car
 
       - name: Create CAR archive of public folder
         run: ipfs-car --pack ./public --output preview.car
