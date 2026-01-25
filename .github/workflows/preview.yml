@@ -77,16 +77,11 @@ jobs:
         env:
           AWS_EC2_METADATA_DISABLED: true
         run: |
-          aws --endpoint-url https://s3.filebase.com \
+          aws --endpoint https://s3.filebase.com \
             s3 cp preview.car \
-            s3://libp2p-preview/${{ steps.vars.outputs.prefix }} \
-            --content-type application/car \
-            --metadata import=car \
+            s3://${{ secrets.FILEBASE_BUCKET_PREVIEW }} \
+            --metadata 'import=car' \
             --debug > upload.log 2>&1
-
-          echo "===== LOG ====="
-          cat upload.log
-          echo "==============="
 
           # Extract CID from debug log (x-amz-meta-cid header)
           CID=$(grep -i 'x-amz-meta-cid' upload.log | awk -F': ' '{print $2}' | tr -d '\r')
@@ -104,7 +99,7 @@ jobs:
             **Preview ready!**
 
             View the preview build here:  
-            https://gateway.filebase.com/ipfs/${{ steps.upload.outputs.cid }}/
+            https://libp2p.myfilebase.com/ipfs/${{ steps.upload.outputs.cid }}/
 
             (Root CID: ${{ steps.upload.outputs.cid }} – expires when PR is closed/branch deleted)
 
