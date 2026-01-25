@@ -69,7 +69,7 @@ jobs:
       - name: Determine preview path prefix
         id: vars
         run: |
-          echo "prefix=pr-${{ github.event.number }}/" >> $GITHUB_OUTPUT
+          echo "prefix=pr-${{ github.event.number }}" >> $GITHUB_OUTPUT
           echo "short_sha=${GITHUB_SHA::8}" >> $GITHUB_OUTPUT
 
       - name: Upload CAR to preview bucket (with import=car)
@@ -79,15 +79,18 @@ jobs:
         run: |
           aws --endpoint https://s3.filebase.com \
             s3 cp preview.car \
-            s3://${{ secrets.FILEBASE_BUCKET_PREVIEW }} \
-            --metadata 'import=car' \
-            --debug > upload.log 2>&1
+            s3://${{ secrets.FILEBASE_BUCKET_PREVIEW }}/${{ steps.var.outputs.prefix}}/ \
+            --metadata 'import=car'
+          aws --endpoint https://s3.filebase.com \
+            s3api head-object \
+            --bucket ${{ secrets.FILEBASE_BUCKET_PREVIEW }} \
+            --key ${{ steps.var.output.prefix}}/preview.car > head-object.log 2>&1
 
           # Extract CID from debug log (x-amz-meta-cid header)
-          CID=$(grep -i 'x-amz-meta-cid' upload.log | awk -F': ' '{print $2}' | tr -d '\r')
+          CID=$(jq -r .Metadata.cid head-object.log | tr -d '\r')
           if [ -z "$CID" ]; then
             echo "Failed to extract CID from upload response"
-            cat upload.log
+            cat head-object.log
             exit 1
           fi
           echo "cid=$CID" >> $GITHUB_OUTPUT
@@ -103,6 +106,5 @@ jobs:
 
             (Root CID: ${{ steps.upload.outputs.cid }} – expires when PR is closed/branch deleted)
 
-            Alternative (S3 path): https://${{ secrets.FILEBASE_BUCKET_PREVIEW }}.s3.filebase.com/${{ steps.vars.outputs.prefix }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           comment_tag: preview-url   # avoids duplicate comments on rebuilds

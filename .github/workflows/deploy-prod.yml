@@ -49,7 +49,7 @@ jobs:
         run: npm install -g ipfs-car
 
       - name: Create CAR archive of public folder
-        run: ipfs-car pack ./public --output prod.car
+        run: ipfs-car pack ./public --output libp2p.car
 
       - name: Configure AWS credentials for Filebase
         env:
@@ -68,17 +68,20 @@ jobs:
         env:
           AWS_EC2_METADATA_DISABLED: true
         run: |
-          aws --endpoint-url https://s3.filebase.com \
-            s3 cp prod.car \
-            s3://${{ secrets.FILEBASE_BUCKET_PROD }}/site.car \
-            --content-type application/car \
-            --metadata import=car \
-            --debug > upload.log 2>&1
+          aws --endpoint https://s3.filebase.com \
+            s3 cp libp2p.car \
+            s3://${{ secrets.FILEBASE_BUCKET_PROD }}/ \
+            --metadata 'import=car'
+          aws --endpoint https://s3.filebase.com \
+            s3api head-object \
+            --bucket ${{ secrets.FILEBASE_BUCKET_PROD }} \
+            --key libp2p.car > head-object.log 2>&1
 
-          CID=$(grep -i 'x-amz-meta-cid' upload.log | awk -F': ' '{print $2}' | tr -d '\r')
+          # Extract CID from debug log (x-amz-meta-cid header)
+          CID=$(jq -r .Metadata.cid head-object.log | tr -d '\r')
           if [ -z "$CID" ]; then
             echo "Failed to extract CID from upload response"
-            cat upload.log
+            cat head-object.log
             exit 1
           fi
           echo "cid=$CID" >> $GITHUB_OUTPUT
@@ -87,5 +90,5 @@ jobs:
         run: |
           echo "::notice title=Production Deployed::"
           echo "Root CID: ${{ steps.upload.outputs.cid }}"
-          echo "View site: https://gateway.filebase.com/ipfs/${{ steps.upload.outputs.cid }}/"
+          echo "View site: https://libp2p.myfilebase.com/ipfs/${{ steps.upload.outputs.cid }}/"
           # Optional: add IPNS update, GitHub deployment, Slack notification, etc. here
