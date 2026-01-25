@@ -52,11 +52,13 @@ jobs:
         run: ipfs-car pack ./public --output prod.car
 
       - name: Configure AWS credentials for Filebase
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.FILEBASE_ACCESS_KEY }}
-          aws-secret-access-key: ${{ secrets.FILEBASE_SECRET_KEY }}
-          aws-region: us-east-1
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.FILEBASE_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.FILEBASE_SECRET_KEY }}
+          AWS_DEFAULT_REGION: us-east-1   # Filebase ignores region, but required
+        run: |
+          echo "AWS credentials exported as env vars"
+          aws configure list
 
       - name: Upload CAR to production bucket (with import=car)
         id: upload
