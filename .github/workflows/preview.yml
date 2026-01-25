@@ -57,12 +57,11 @@ jobs:
         run: ipfs-car pack ./public --output preview.car
 
       - name: Configure AWS credentials for Filebase
-        uses: aws-actions/configure-aws-credentials@v4
+        uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.FILEBASE_ACCESS_KEY }}
           aws-secret-access-key: ${{ secrets.FILEBASE_SECRET_KEY }}
           aws-region: us-east-1   # Filebase ignores region, but required
-          role-to-assume: ""      # No role to assume, prevents OIDC mode
 
       - name: Determine preview path prefix
         id: vars
