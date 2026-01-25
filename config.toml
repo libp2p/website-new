@@ -26,9 +26,9 @@ github = "https://github.com/libp2p/libp2p"
 implementations = "https://github.com/libp2p/libp2p?tab=readme-ov-file#implementations"
 site_repo = "https://github.com/libp2p/website"
 specs_repo = "https://github.com/libp2p/specs"
-docs_repo = "https://docs.libp2p.io"
-blog_url = "https://blog.libp2p.io"
-connectivity_url = "https://connectivity.libp2p.io"
+docs_repo = "https://libp2p.io/docs"
+blog_url = "https://libp2p.io/blog"
+connectivity_url = "https://libp2p.io/connectivity"
 
 # discussion forums
 libp2p_community = "https://discuss.libp2p.io"
