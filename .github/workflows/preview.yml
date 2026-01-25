@@ -1,0 +1,116 @@
+name: Preview on PR / Branch
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches-ignore: [main]
+
+permissions:
+  contents: read
+  pull-requests: write   # needed to comment on PR
+
+jobs:
+  build-and-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # Zola sometimes benefits from full history
+
+      - name: Cache Zola binary
+        id: cache-zola
+        uses: actions/cache@v4
+        with:
+          path: /usr/local/bin/zola
+          key: zola-binary-v0.22.1-${{ runner.os }}
+
+      - name: Install Zola (if not cached)
+        if: steps.cache-zola.outputs.cache-hit != 'true'
+        run: |
+          wget -q https://github.com/getzola/zola/releases/download/v0.22.1/zola-v0.22.1-x86_64-unknown-linux-gnu.tar.gz
+          tar xf zola-v0.22.1-x86_64-unknown-linux-gnu.tar.gz
+          chmod +x zola
+          sudo mv zola /usr/local/bin/zola
+
+      - name: Build Zola site
+        run: zola build
+
+      - name: Set up Node.js for ipfs-car
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Cache ipfs-car (global node_modules)
+        id: cache-ipfs-car
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm/_npx
+          key: ipfs-car-npx-${{ runner.os }}-node20
+
+      - name: Install ipfs-car (if not cached)
+        if: steps.cache-ipfs-car.outputs.cache-hit != 'true'
+        run: npm install -g ipfs-car
+
+      - name: Create CAR archive of public folder
+        run: ipfs-car pack ./public --output preview.car
+
+      - name: Configure AWS credentials for Filebase
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.FILEBASE_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.FILEBASE_SECRET_KEY }}
+          AWS_DEFAULT_REGION: us-east-1   # Filebase ignores region, but required
+        run: |
+          echo "AWS credentials exported as env vars"
+          aws configure list
+
+      - name: Determine preview path prefix
+        id: vars
+        run: |
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            PREFIX="pr-${{ github.event.number }}/"
+          else
+            # For direct branch pushes (non-PR), use branch name sanitized
+            BRANCH_SAFE=$(echo "${GITHUB_REF_NAME}" | sed 's/[^a-zA-Z0-9-]/-/g')
+            PREFIX="branch-${BRANCH_SAFE}/"
+          fi
+          echo "prefix=$PREFIX" >> $GITHUB_OUTPUT
+          echo "short_sha=${GITHUB_SHA::8}" >> $GITHUB_OUTPUT
+
+      - name: Upload CAR to preview bucket (with import=car)
+        id: upload
+        env:
+          AWS_EC2_METADATA_DISABLED: true
+        run: |
+          aws --endpoint-url https://s3.filebase.com \
+            s3 cp preview.car \
+            s3://${{ secrets.FILEBASE_BUCKET_PREVIEW }}/${{ steps.vars.outputs.prefix }}site.car \
+            --content-type application/car \
+            --metadata import=car \
+            --debug > upload.log 2>&1
+
+          # Extract CID from debug log (x-amz-meta-cid header)
+          CID=$(grep -i 'x-amz-meta-cid' upload.log | awk -F': ' '{print $2}' | tr -d '\r')
+          if [ -z "$CID" ]; then
+            echo "Failed to extract CID from upload response"
+            cat upload.log
+            exit 1
+          fi
+          echo "cid=$CID" >> $GITHUB_OUTPUT
+
+      - name: Comment preview URL on PR
+        if: github.event_name == 'pull_request'
+        uses: thollander/actions-comment-pull-request@v3
+        with:
+          message: |
+            **Preview ready!**
+
+            View the preview build here:  
+            https://gateway.filebase.com/ipfs/${{ steps.upload.outputs.cid }}/
+
+            (Root CID: ${{ steps.upload.outputs.cid }} – expires when PR is closed/branch deleted)
+
+            Alternative (S3 path): https://${{ secrets.FILEBASE_BUCKET_PREVIEW }}.s3.filebase.com/${{ steps.vars.outputs.prefix }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          comment_tag: preview-url   # avoids duplicate comments on rebuilds
