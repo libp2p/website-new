@@ -1,11 +1,12 @@
+{% import "macros.html" as macros %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <!-- include "head.html" -->
 {% include "head.html" -%}
 <!-- include "head.html" -->
-<link rel="stylesheet" type="text/css" href="/css/fontawesome.css">
-<link rel="stylesheet" type="text/css" href="/css/media.css">
+<link rel="stylesheet" type="text/css" href="{{ macros::rel() }}css/fontawesome.css">
+<link rel="stylesheet" type="text/css" href="{{ macros::rel() }}css/media.css">
 <title>Media - libp2p</title>
 </head>
 <body>
@@ -94,7 +95,7 @@
           <div class="video-container">
             <iframe src="https://www.youtube.com/embed/b8AZBVdrCC0" allowfullscreen></iframe>
           </div>
-          <p>Demystifying libp2p Gossipsub - Raúl Kripalani</p>
+          <p>Demystifying libp2p Gossipsub - Raul Kripalani</p>
         </div>
         <div class="item-video">
           <div class="video-container">
@@ -112,7 +113,7 @@
           <div class="video-container">
             <iframe src="https://www.youtube.com/embed/jZrAnnFO-2c" allowfullscreen></iframe>
           </div>
-          <p>DOS Defense - Do’s and Don’ts - Max Inden </p>
+          <p>DOS Defense - Do's and Don'ts - Max Inden </p>
         </div>
         <div class="item-video">
           <div class="video-container">
@@ -201,7 +202,7 @@
 <!-- include "footer.html" -->
 {% include "footer.html" -%}
 <!-- include "footer.html" -->
-<script type="text/javascript" src="../js/common.js"></script>
-<script type="text/javascript" src="../js/media.js"></script>
+<script type="text/javascript" src="{{ macros::rel() }}js/common.js"></script>
+<script type="text/javascript" src="{{ macros::rel() }}js/media.js"></script>
 </body>
 </html>

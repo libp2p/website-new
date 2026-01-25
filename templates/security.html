@@ -1,3 +1,4 @@
+{% import "macros.html" as macros %}
 <article class="center security">
   <h1>Security</h1>
   <div class="wrap" style="padding-bottom:30px;">
@@ -10,7 +11,7 @@
   <h2>Reporting a Security Vulnerability</h2>
   <div class="wrap" style="padding-bottom:30px;">
       <p>If you find a vulnerability that may affect live deployments—such as a
-      remote execution exploit—please report it privately by sending an email to 
+      remote execution exploit—please report it privately by sending an email to
       <a href="mailto:security@libp2p.io">security@libp2p.io</a>. <b>DO NOT</b>
       file a public issue.</p>
 
@@ -18,7 +19,7 @@
       exploited or is not yet deployed, please file a public Github issue to get
       it resolved.</p>
   </div>
-  <img class="decoration img5" width="43" height="47" src="/img/img5.png" alt="">
-  <img class="decoration img6" width="42" height="74" src="/img/img6.png" alt="">
+  <img class="decoration img5" width="43" height="47" src="{{ macros::rel() }}img/img5.png" alt="">
+  <img class="decoration img6" width="42" height="74" src="{{ macros::rel() }}img/img6.png" alt="">
   <div class="triangle white"></div>
 </article>

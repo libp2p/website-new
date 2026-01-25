@@ -1,3 +1,4 @@
+{% import "macros.html" as macros %}
 {% import "symbol.html" as symbol %}
 <style>
   .a-modular-network-stack {
@@ -66,7 +67,7 @@
 <article class="a-modular-network-stack" style="overflow:hidden;">
   <div style="height:475px;" id="splash-stage">
     <div class="layer module-transports anim-fade">
-      <img src="/img/svg/transports.svg" alt="Transports" title="Transports">
+      <img src="{{ macros::rel() }}img/svg/transports.svg" alt="Transports" title="Transports">
     </div>
     {{- symbol::place(id="blue-2", start="translate(-31.8%, 346px)", end="translate(-55px, 234px)", fadeDelay="0ms") -}}
     {{- symbol::place(id="discovery", start="translate(39.8%, 297px)", end="translate(37px, 213px)", fadeDelay="100ms") -}}
@@ -146,7 +147,7 @@
       tabindex="0"
     ></iframe>
   </div>
-  <img class="decoration img1" width="61" height="85" src="/img/img1.png" alt="">
-  <img class="decoration img2" width="41" height="99" src="/img/img2.png" alt="">
+  <img class="decoration img1" width="61" height="85" src="{{ macros::rel() }}img/img1.png" alt="">
+  <img class="decoration img2" width="41" height="99" src="{{ macros::rel() }}img/img2.png" alt="">
   <div class="triangle white"></div>
 </article>
