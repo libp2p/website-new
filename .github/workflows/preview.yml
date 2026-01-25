@@ -1,10 +1,8 @@
-name: Preview on PR / Branch
+name: Preview on PR
 
 on:
   pull_request:
     branches: [main]
-  push:
-    branches-ignore: [main]
 
 permissions:
   contents: read
@@ -71,14 +69,7 @@ jobs:
       - name: Determine preview path prefix
         id: vars
         run: |
-          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
-            PREFIX="pr-${{ github.event.number }}/"
-          else
-            # For direct branch pushes (non-PR), use branch name sanitized
-            BRANCH_SAFE=$(echo "${GITHUB_REF_NAME}" | sed 's/[^a-zA-Z0-9-]/-/g')
-            PREFIX="branch-${BRANCH_SAFE}/"
-          fi
-          echo "prefix=$PREFIX" >> $GITHUB_OUTPUT
+          echo "prefix=pr-${{ github.event.number }}/" >> $GITHUB_OUTPUT
           echo "short_sha=${GITHUB_SHA::8}" >> $GITHUB_OUTPUT
 
       - name: Upload CAR to preview bucket (with import=car)
@@ -107,7 +98,6 @@ jobs:
           echo "cid=$CID" >> $GITHUB_OUTPUT
 
       - name: Comment preview URL on PR
-        if: github.event_name == 'pull_request'
         uses: thollander/actions-comment-pull-request@v3
         with:
           message: |
