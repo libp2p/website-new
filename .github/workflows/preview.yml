@@ -79,12 +79,12 @@ jobs:
         run: |
           aws --endpoint https://s3.filebase.com \
             s3 cp preview.car \
-            s3://${{ secrets.FILEBASE_BUCKET_PROD }}/preview/${{ steps.var.outputs.prefix}}/ \
+            s3://${{ secrets.FILEBASE_BUCKET_PROD }}/preview/${{ steps.vars.outputs.prefix }}/ \
             --metadata 'import=car'
           aws --endpoint https://s3.filebase.com \
             s3api head-object \
             --bucket ${{ secrets.FILEBASE_BUCKET_PROD }} \
-            --key preview/${{ steps.var.output.prefix}}/preview.car > head-object.log 2>&1
+            --key preview/${{ steps.vars.outputs.prefix }}/preview.car > head-object.log 2>&1
 
           # Extract CID from debug log (x-amz-meta-cid header)
           CID=$(jq -r .Metadata.cid head-object.log | tr -d '\r')
